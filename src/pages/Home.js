@@ -3,7 +3,7 @@ import {Layout} from '../layout'
 
 const Home = () => (
   <Layout>
-      This is the Home page
+    <img src="../../public/img/DFLiveShot.JPG" alt="DFLiveShot"/>
   </Layout>
 )
 
