@@ -7,6 +7,7 @@
     "@testing-library/react": "^11.1.0",
     "@testing-library/user-event": "^12.1.10",
     "autoprefixer": "^10.0.1",
+    "babel-polyfill": "^6.26.0",
     "postcss": "^8.1.4",
     "postcss-cli": "^8.2.0",
     "react": "^17.0.1",
@@ -19,7 +20,7 @@
   },
   "scripts": {
     "start": "react-scripts start",
-    "build": "postcss css/tailwind.css -o public/build/tailwind.css",
+    "build": "postcss css/tailwind.css -o public/build/tailwind.css & webpack --mode production ",
     "test": "react-scripts test",
     "eject": "react-scripts eject"
   },
@@ -44,10 +45,11 @@
   "devDependencies": {
     "@babel/core": "^7.12.3",
     "@babel/preset-env": "^7.12.1",
-    "@webpack-cli/init": "^1.0.2",
+    "@babel/preset-react": "^7.12.1",
     "babel-loader": "^8.1.0",
     "babel-plugin-syntax-dynamic-import": "^6.18.0",
     "terser-webpack-plugin": "^5.0.3",
+    "url-loader": "^4.1.1",
     "webpack-cli": "^4.1.0"
   },
   "description": "My rehearsal log app"
