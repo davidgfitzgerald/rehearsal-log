@@ -1,9 +1,10 @@
 import React from 'react'
+import DFLiveShot from "../assets/images/DFLiveShot.JPG"
 import {Layout} from '../layout'
 
 const Home = () => (
   <Layout>
-    <img src="../../public/img/DFLiveShot.JPG" alt="DFLiveShot"/>
+    <img src={DFLiveShot} alt="DFLiveShot"/>
   </Layout>
 )
 
