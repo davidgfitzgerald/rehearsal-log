@@ -1,5 +1,5 @@
 import React from 'react'
-import { Home, About, Contact } from './pages'
+import { Home, About, Development } from './pages'
 import { Nav, Footer } from './layout'
 import {
   BrowserRouter as Router,
@@ -19,7 +19,7 @@ function App() {
             <div>
               <Route exact path="/"><Home/></Route>
               <Route exact path="/about"><About/></Route>
-              <Route exact path="/contact"><Contact/></Route>
+              <Route exact path="/development"><Development/></Route>
             </div>
           </Switch>
         </div>
