@@ -4,7 +4,7 @@ import { APP_COLOUR_1 } from '../globals.json'
 const navs = [
   {url: '/', name: 'Home'},
   {url: '/about', name: 'About'},
-  {url: '/contact', name: 'Contact'},
+  {url: '/development', name: 'Development'},
 ]
 
 const Nav = () => (
