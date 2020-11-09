@@ -1,10 +1,16 @@
 import React from 'react'
 import { Layout } from '../layout'
 
-const Home = () => (
-  <Layout>
-    This is the Home page.
-  </Layout>
-)
+class Home extends React.Component {
+
+  render () {
+    return (
+      <Layout>
+        <div className="p-5">This is the Home page.</div>
+      </Layout>
+    )
+  }
+
+}
 
 export default Home;
