@@ -8,6 +8,7 @@
     "@testing-library/user-event": "^12.1.10",
     "autoprefixer": "^10.0.1",
     "babel-polyfill": "^6.26.0",
+    "formik": "^2.2.3",
     "postcss": "^8.1.4",
     "postcss-cli": "^8.2.0",
     "react": "^17.0.1",
