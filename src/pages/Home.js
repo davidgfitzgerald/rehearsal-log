@@ -11,6 +11,7 @@ class Home extends React.Component {
       <Layout>
         <PracticeForm/>
         {/*<Clock/>*/}
+        {/*<Toggle/>*/}
       </Layout>
     )
   }

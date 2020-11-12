@@ -32,7 +32,7 @@ class PracticeForm extends React.Component {
 
     return (
       <div>
-        <h1 className="text-2xl m-10 flex justify-center">New Practice</h1>
+        <h1 className="ctitle1">New Practice</h1>
         <form className="p-5 flex border-2 border-gray-400">
           {labels.map((l) => {
             return (

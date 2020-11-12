@@ -1,5 +1,5 @@
 import React from 'react';
-import { APP_COLOUR_1, APP_COLOUR_2 } from '../globals.json'
+import { APP_COLOUR_1, APP_COLOUR_2 } from '../utils/globals.json'
 import {Layout} from "./index";
 import Toggle from "../components/Toggle";
 

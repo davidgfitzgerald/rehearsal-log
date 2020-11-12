@@ -1,12 +1,11 @@
 import React from 'react'
+import './assets/css/main.css'
+
 import { Home, About, Development } from './pages'
 import { Nav, Footer } from './layout'
-import {
-  BrowserRouter as Router,
-  Switch,
-  Route
-} from 'react-router-dom'
-import { APP_COLOUR_1 } from './globals.json'
+import { BrowserRouter as Router, Switch, Route } from 'react-router-dom'
+import { APP_COLOUR_1 } from './utils/globals.json'
+
 
 function App() {
   return (
