@@ -19202,13 +19202,33 @@ video {
 
 /* Custom Styling */
 
-/* Title 1 */
-
-.ctitle1 {
+.ctitle {
   font-size: 1.5rem;
   margin: 2.5rem;
   display: flex;
   justify-content: center;
+}
+
+.cform {
+  padding: 1.25rem;
+  display: flex;
+  border-width: 2px;
+  --border-opacity: 1;
+  border-color: #cbd5e0;
+  border-color: rgba(203, 213, 224, var(--border-opacity))
+}
+
+.cbutton {
+  display: inline-block;
+  padding-left: 1.25rem;
+  padding-right: 1.25rem;
+  padding-top: 0.75rem;
+  padding-bottom: 0.75rem;
+  box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.25);
+  font-size: 1.125rem;
+  border-radius: 0.375rem;
+  font-weight: 600;
+  letter-spacing: 0.025em
 }
 
 @media (min-width: 640px) {
