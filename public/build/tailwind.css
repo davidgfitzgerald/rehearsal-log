@@ -19200,6 +19200,17 @@ video {
   animation: bounce 1s infinite;
 }
 
+/* Custom Styling */
+
+/* Title 1 */
+
+.ctitle1 {
+  font-size: 1.5rem;
+  margin: 2.5rem;
+  display: flex;
+  justify-content: center;
+}
+
 @media (min-width: 640px) {
   .sm\:container {
     width: 100%;
