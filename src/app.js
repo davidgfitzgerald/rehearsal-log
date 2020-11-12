@@ -1,5 +1,4 @@
 import React from 'react'
-import './assets/css/main.css'
 
 import { Home, About, Development } from './pages'
 import { Nav, Footer } from './layout'

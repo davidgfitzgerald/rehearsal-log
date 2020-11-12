@@ -6,7 +6,7 @@ class Development extends React.Component {
   render() {
     return(
       <Layout>
-        <div className="ctitle1">Coming Soon.</div>
+        <div className="ctitle">Coming Soon.</div>
       </Layout>
     )
   }

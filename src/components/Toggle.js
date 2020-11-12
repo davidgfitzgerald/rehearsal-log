@@ -18,8 +18,7 @@ class Toggle extends React.Component {
 
   render() {
     return (
-      <button className={"inline-block px-5 py-3 shadow-2xl rounded-md " +
-      "bg-"+APP_COLOUR_2+"-500 text-white text-md font-semibold tracking-wide"}
+      <button className={"cbutton bg-"+APP_COLOUR_2+"-500 text-white"}
               onClick={this.handleClick}>
         {this.state.isToggleOn ? 'ON' : 'OFF'}
       </button>

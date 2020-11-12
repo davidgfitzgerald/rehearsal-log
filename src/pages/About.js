@@ -7,7 +7,7 @@ class About extends React.Component {
   render() {
     return (
       <Layout>
-        <h1 className="ctitle1">About</h1>
+        <h1 className="ctitle">About</h1>
         <div className="mt-4 flex justify-center">
           <img className="max-w-lg object-cover rounded-3xl shadow-2xl"
                src={DFLiveShot} alt="DFLiveShot"/>
