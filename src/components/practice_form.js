@@ -1,66 +1,55 @@
 import React from 'react'
+import { useFormik } from "formik";
 
-class PracticeForm extends React.Component {
-  constructor(props) {
-    super(props);
-    this.state = {
+
+function PracticeForm() {
+  const labels = [
+    {displayText: "Duration:", name: "duration"},
+    {displayText: "BPM:", name: "bpm"},
+  ];
+
+  const formik = useFormik({
+    initialValues: {
       duration: "",
-      instrument: "",
+      instrument: "drums",
       bpm: "",
-      exercise_id: ""
+      exercise_id: null
+    },
+    onSubmit: values => {
+      alert(JSON.stringify(values, null, 2))
     }
+  });
 
-    this.handleChange = this.handleChange.bind(this)
-  }
+  return (
+    <div>
+      <h1 className="ctitle">New Practice</h1>
+      <form className="cform" onSubmit={formik.handleSubmit}>
+        {labels.map((l) => {
+          return (
+            <label htmlFor={l.name} className="m-2">{l.displayText}
+              <input id={l.name} className="m-1 border-2" value={formik.values[l.name]}
+                     type="text" name={l.name} onChange={formik.handleChange}/>
+            </label>
+          )
+        })}
+        <select className="m-2" id="instrument" name="instrument" value={formik.values.instrument} onChange={formik.handleChange}>
+          <option value="drums">Drums</option>
+          <option value="guitar">Guitar</option>
+        </select>
 
-  handleChange(event) {
-    const target = event.target
-    const value = target.value
-    const name = target.name
-
-    console.log(name)
-    console.log(value)
-
-    this.setState({[name]: value})
-  }
-
-  render() {
-    const labels = [
-      {displayText: "Duration:", name: "duration"},
-      {displayText: "BPM:", name: "bpm"},
-      ];
-
-    return (
-      <div>
-        <h1 className="ctitle1">New Practice</h1>
-        <form className="p-5 flex border-2 border-gray-400">
-          {labels.map((l) => {
+        <select placeholder="Exercise ID" className="m-2" id="exercise_id" name="exercise_id"
+                value={formik.values.exercise_id} onChange={formik.handleChange}>
+          <option>Exercise ID</option>
+          {[1,2,3].map((i) => {
             return (
-              <label className="m-2">{l.displayText}
-                <input className="m-1 border-2" value={this.state[l.name]} type="text" name={l.name} onChange={this.handleChange}/>
-              </label>
+              <option value={i}>{i}</option>
             )
           })}
-          <select className="m-2" name="instrument" value={this.state.instrument} onChange={this.handleChange}>
-            <option value="drums">Drums</option>
-            <option value="guitar">Guitar</option>
-          </select>
-
-          <select placeholder="Exercise ID" className="m-2" name="exercise_id" value={this.state.exercise_id} onChange={this.handleChange}>
-            <option>Exercise ID</option>
-            {[1,2,3].map((i) => {
-              return (
-                <option value={i}>{i}</option>
-              )
-            })}
-          </select>
-          <input type="submit" value="Submit"/>
-        </form>
-      </div>
-
-    )
-  }
-
+        </select>
+        <button type="submit">Submit</button>
+      </form>
+    </div>
+  );
 }
 
-export default PracticeForm
+export { PracticeForm }
