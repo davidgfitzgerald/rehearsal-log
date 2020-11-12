@@ -21,7 +21,7 @@
   },
   "scripts": {
     "start": "react-scripts start",
-    "build": "postcss tailwind.css -o public/build/tailwind.css & webpack --mode production",
+    "build": "postcss css/tailwind.css -o public/build/tailwind.css & webpack --mode production",
     "test": "react-scripts test",
     "eject": "react-scripts eject"
   },
