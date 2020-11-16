@@ -11,6 +11,10 @@
     @apply p-5 flex border-2 border-gray-400
 }
 
+.cpractice {
+    @apply m-2 p-5 flex border-2 border-gray-400
+}
+
 .cbutton {
     @apply inline-block px-5 py-3 shadow text-lg rounded-md font-semibold tracking-wide
 }

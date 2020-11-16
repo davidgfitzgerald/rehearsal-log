@@ -19218,6 +19218,16 @@ video {
   border-color: rgba(203, 213, 224, var(--border-opacity))
 }
 
+.cpractice {
+  margin: 0.5rem;
+  padding: 1.25rem;
+  display: flex;
+  border-width: 2px;
+  --border-opacity: 1;
+  border-color: #cbd5e0;
+  border-color: rgba(203, 213, 224, var(--border-opacity))
+}
+
 .cbutton {
   display: inline-block;
   padding-left: 1.25rem;
