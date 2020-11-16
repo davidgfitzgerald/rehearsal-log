@@ -12,5 +12,5 @@
 }
 
 .cbutton {
-    @apply inline-block px-5 py-3 shadow-2xl text-lg rounded-md font-semibold tracking-wide
+    @apply inline-block px-5 py-3 shadow text-lg rounded-md font-semibold tracking-wide
 }
