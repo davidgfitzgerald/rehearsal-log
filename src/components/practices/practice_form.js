@@ -1,6 +1,6 @@
 import React from 'react'
 import { useFormik } from "formik";
-import { APP_COLOUR_2 } from "../utils/globals.json";
+import { APP_COLOUR_2 } from "../../utils/globals.json";
 
 
 function PracticeForm() {
