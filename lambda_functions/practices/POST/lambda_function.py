@@ -1,8 +1,8 @@
-import json
-
 import boto3
 import logging
 import pymysql
+
+# TODO call new lambda function to get token?
 
 # Logger
 logger = logging.getLogger()
@@ -22,7 +22,6 @@ logger.debug(f"Response from generate_db_auth_token:\n {auth_token}")
 
 # SSL
 ssl = {'ca': 'rds-combined-ca-bundle.pem'}
-# ssl = {'ca': '/opt/python/rds-combined-ca-bundle.pem'}
 
 # Connection
 connection = pymysql.connect(host=RDS_ENDPOINT, port=RDS_PORT, db=DATABASE_NAME,
@@ -47,16 +46,16 @@ def lambda_handler(event, context):
 
     with connection.cursor(pymysql.cursors.DictCursor) as cur:
         try:
-            # TODO POST practice
-            sql_query = 'SELECT * from practices'
-            cur.execute(sql_query)
+            create_practice_query = "INSERT INTO practices (duration, instrument, bpm, exercise_id) " \
+                        "values (%s, %s, %s, %s)"
+            cur.execute(create_practice_query, (duration, instrument, bpm, exercise_id))
             connection.commit()
 
-            practices = cur.fetchall()
-            for practice in practices:
-                print(practice)
+            get_practice_query = "SELECT * FROM practices WHERE practice_id=%s"
+            cur.execute(get_practice_query, cur.lastrowid)
 
-            return practices
+            for row in cur:
+                return row
 
         except Exception as e:
             connection.rollback()
@@ -68,7 +67,9 @@ if __name__ == '__main__':
         "duration": "999",
         "instrument": "drums",
         "bpm": "99",
-        # "exercise_id": "1"
+        "exercise_id": "1"
     }
 
-    lambda_handler(ev, None)
+    response = lambda_handler(ev, None)
+    logging.info("Practice created")
+    logging.info(f"Response: {response}")
