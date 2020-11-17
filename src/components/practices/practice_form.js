@@ -25,9 +25,9 @@ function PracticeForm() {
     <div>
       <h1 className="ctitle">New Practice</h1>
       <form className="cform" onSubmit={formik.handleSubmit}>
-        {labels.map((l) => {
+        {labels.map((l, i) => {
           return (
-            <label htmlFor={l.name} className="m-2">{l.displayText}
+            <label key={i} htmlFor={l.name} className="m-2">{l.displayText}
               <input id={l.name} className="m-1 border-2" value={formik.values[l.name]}
                      type="text" name={l.name} onChange={formik.handleChange}/>
             </label>
@@ -43,7 +43,7 @@ function PracticeForm() {
           <option>Exercise ID</option>
           {[1,2,3].map((i) => {
             return (
-              <option value={i}>{i}</option>
+              <option key={i} value={i}>{i}</option>
             )
           })}
         </select>
