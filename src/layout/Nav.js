@@ -2,7 +2,7 @@ import React from 'react';
 import {NavLink} from "react-router-dom";
 import { APP_COLOUR_1 } from '../utils/globals.json'
 const navs = [
-  {url: '/', name: 'Home'},
+  {url: '/', name: 'Practices'},
   {url: '/about', name: 'About'},
   {url: '/development', name: 'Development'},
 ]

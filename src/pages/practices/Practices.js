@@ -2,7 +2,7 @@ import React from 'react'
 import { Layout } from '../../layout'
 import { PracticeForm, PracticeIndex } from "../../components/practices";
 
-class Home extends React.Component {
+class Practices extends React.Component {
 
   render () {
     return (
@@ -15,4 +15,4 @@ class Home extends React.Component {
 
 }
 
-export default Home;
+export default Practices;
