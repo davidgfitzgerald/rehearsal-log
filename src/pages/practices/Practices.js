@@ -9,8 +9,6 @@ class Home extends React.Component {
       <Layout>
         <PracticeIndex/>
         <PracticeForm/>
-        {/*<Clock/>*/}
-        {/*<Toggle/>*/}
       </Layout>
     )
   }
