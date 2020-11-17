@@ -4,7 +4,7 @@
 
 /* Custom Styling */
 .ctitle {
-    @apply text-2xl m-10 flex justify-center;
+    @apply text-3xl m-6 flex justify-center;
 }
 
 .cform {
