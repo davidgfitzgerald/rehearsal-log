@@ -1,6 +1,6 @@
 import boto3
 import logging
-from practices.GET import pymysql
+import pymysql
 
 # Logger
 logger = logging.getLogger()
@@ -19,8 +19,7 @@ auth_token = rds_client.generate_db_auth_token(RDS_ENDPOINT, RDS_PORT, USERNAME)
 logger.debug(f"Response from generate_db_auth_token:\n {auth_token}")
 
 # SSL
-# ssl = {'ca': 'rds-combined-ca-bundle.pem'}
-ssl = {'ca': '/opt/python/rds-combined-ca-bundle.pem'}
+ssl = {'ca': 'rds-combined-ca-bundle.pem'}
 
 # Connection
 connection = pymysql.connect(host=RDS_ENDPOINT, port=RDS_PORT, db=DATABASE_NAME,
