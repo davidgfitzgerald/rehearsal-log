@@ -8,9 +8,24 @@ class Practice extends React.Component {
   }
 
   render() {
-    let key = this.key;
-    let data = this.data;
-    return <li className="cpractice" key={key}>{JSON.stringify(data)}</li>
+    let data = this.data
+
+    return (
+      <div className="flex m-2 justify-center">
+        <ul className="cpractice">
+          <li className=" flex m-2">Practice {data["practice_id"]}:</li>
+        </ul>
+        <ul className="cpractice">
+          {Object.keys(data).filter(key => key !== "practice_id").map((k) => {
+              return (
+                <li className="flex m-2">{k}: {data[k]}</li>
+              )
+        })}
+        </ul>
+      </div>
+    )
+
+
   }
 }
 
