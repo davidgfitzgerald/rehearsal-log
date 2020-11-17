@@ -1,16 +1,38 @@
 import React from 'react'
+import { ENDPOINTS } from '../../utils/globals.json'
+import { Practice } from "./practice";
+
+const GETPractices = ENDPOINTS.PRACTICES.GET;
 
 class PracticeIndex extends React.Component {
+
   constructor(props) {
     super(props);
     this.state = {
-      practices: [
-        // {"test": "practice"}
-      ]
+      error: null,
+      isLoaded: false,
+      practices: []
     }
   }
-  componentDidMount() {
 
+  componentDidMount() {
+    fetch(GETPractices)
+      .then(res => res.json())
+      .then(
+        (response) => {
+          this.setState({
+            isLoaded: true,
+            practices: response
+
+          });
+        },
+        (error) => {
+          this.setState({
+            isLoaded: true,
+            error
+          })
+        }
+      )
   }
 
   render() {
@@ -21,11 +43,12 @@ class PracticeIndex extends React.Component {
       content = <p>No practices found.</p>
     } else {
       content = <ul>{
-        practices.map((p) => {
-          return <li>{p.test}</li>
+        practices.map((p, i) => {
+          return <Practice key={i} data={p}/>
         })
       }</ul>
     }
+
     return (<div>
       <h1 className="ctitle">Practices</h1>
       {content}
@@ -34,4 +57,4 @@ class PracticeIndex extends React.Component {
 
 }
 
-export default PracticeIndex
+export { PracticeIndex }
