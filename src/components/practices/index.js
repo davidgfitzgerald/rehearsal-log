@@ -1,4 +1,4 @@
-import { PracticeForm } from './practice_form'
-import { PracticeIndex } from "./practice_index";
+import { PracticeForm } from './new_practice'
+import { PracticeIndex } from "./show_practices";
 
 export { PracticeForm, PracticeIndex }
