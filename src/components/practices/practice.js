@@ -11,7 +11,7 @@ class Practice extends React.Component {
     let data = this.data
 
     return (
-      <div className="flex m-2 justify-center">
+      <div className="flex justify-center">
         <ul className="cpractice">
           <li className=" flex m-2">Practice {data["practice_id"]}:</li>
         </ul>
