@@ -1,40 +1,18 @@
+import json
 import boto3
 import logging
 import pymysql
-
-# TODO call new lambda function to get token?
 
 # Logger
 logger = logging.getLogger()
 logger.setLevel(logging.DEBUG)
 
-# Config values
-RDS_ENDPOINT = "rehearsal-log.cdlltxeggpnv.us-east-2.rds.amazonaws.com"
-RDS_PORT = 3306
-USERNAME = 'dbaccess'
-DATABASE_NAME = "rehearsal_log"
-
-# Auth Token
+# Clients
+client = boto3.client('lambda')
 rds_client = boto3.client('rds')
-auth_token = rds_client.generate_db_auth_token(RDS_ENDPOINT, RDS_PORT, USERNAME)
-
-logger.debug(f"Response from generate_db_auth_token:\n {auth_token}")
-
-# SSL
-ssl = {'ca': 'rds-combined-ca-bundle.pem'}
-
-# Connection
-connection = pymysql.connect(host=RDS_ENDPOINT, port=RDS_PORT, db=DATABASE_NAME,
-                             user=USERNAME, passwd=auth_token, charset='utf8',
-                             ssl=ssl, connect_timeout=5)
-
-logger.debug("SUCCESS: Connection to MySQL database succeeded")
 
 
 def lambda_handler(event, context):
-    logger.debug(f"event: {event}")
-    logger.debug(f"context: {context}")
-
     try:
         duration = event["duration"]
         instrument = event["instrument"]
@@ -42,6 +20,30 @@ def lambda_handler(event, context):
         exercise_id = event["exercise_id"]
     except KeyError as e:
         logging.error(f"Key {e} missing from payload")
+        raise e
+
+    try:
+        # Get DB Access Data
+        response = client.invoke(
+            FunctionName='arn:aws:lambda:us-east-2:521286727825:function:DBAccessData',
+            InvocationType='RequestResponse'
+        )
+        access_data = json.load(response['Payload'])
+        logger.debug("SUCCESS: DBAccessData Lambda function invoked")
+
+        # Get DB Auth Token
+        auth_token = rds_client.generate_db_auth_token(access_data["RDS_ENDPOINT"], access_data["RDS_PORT"],
+                                                       access_data["USERNAME"])
+        logger.debug("SUCCESS: auth token generated")
+
+        # Connect to DB
+        connection = pymysql.connect(host=access_data["RDS_ENDPOINT"], port=access_data["RDS_PORT"],
+                                     db=access_data["DATABASE_NAME"], user=access_data["USERNAME"],
+                                     passwd=auth_token, ssl=access_data["SSL"],
+                                     connect_timeout=5, charset='utf8', )
+        logger.debug("SUCCESS: Connection to MySQL database succeeded")
+
+    except Exception as e:
         raise e
 
     with connection.cursor(pymysql.cursors.DictCursor) as cur:
@@ -70,6 +72,6 @@ if __name__ == '__main__':
         "exercise_id": "1"
     }
 
-    response = lambda_handler(ev, None)
+    res = lambda_handler(ev, None)
     logging.info("Practice created")
-    logging.info(f"Response: {response}")
+    logging.info(f"Response: {res}")
