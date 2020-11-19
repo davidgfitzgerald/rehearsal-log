@@ -2,7 +2,7 @@ import React from 'react'
 import { ENDPOINTS } from '../../utils/globals.json'
 import { Practice } from "./practice";
 
-const GETPractices = ENDPOINTS.PRACTICES.GET;
+const GETPractices = ENDPOINTS.PRACTICES.BASE;
 
 class PracticeIndex extends React.Component {
 

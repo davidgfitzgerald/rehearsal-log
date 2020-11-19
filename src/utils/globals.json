@@ -4,6 +4,8 @@
   "RDS_ENDPOINT": "rehearsal-log.cdlltxeggpnv.us-east-2.rds.amazonaws.com",
   "AWS_PORT": 3306,
   "ENDPOINTS": {
-    "PRACTICES": {"GET": "https://bx9twbuxn3.execute-api.us-east-2.amazonaws.com/dev/practices"}
+    "PRACTICES": {
+      "BASE": "https://bx9twbuxn3.execute-api.us-east-2.amazonaws.com/dev/practices"
+    }
   }
 }
