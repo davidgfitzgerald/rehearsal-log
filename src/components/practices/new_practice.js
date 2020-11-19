@@ -22,7 +22,7 @@ function PracticeForm() {
   });
 
   return (
-    <div>
+    <div className="m-10">
       <h1 className="ctitle">New Practice</h1>
       <form className="cform" onSubmit={formik.handleSubmit}>
         {labels.map((l, i) => {
