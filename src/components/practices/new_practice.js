@@ -1,14 +1,10 @@
 import React from 'react'
-import { Formik } from "formik";
+import { Formik, Field, Form, ErrorMessage } from "formik";
 import { COLOURS } from "../../utils/globals.json";
 import * as Yup from 'yup'
 
 const SECONDARY_COLOUR = COLOURS.SECONDARY;
 const ERROR_COLOUR = COLOURS.ERROR;
-const labels = [
-  {displayText: "Duration:", name: "duration"},
-  {displayText: "BPM:", name: "bpm"},
-];
 
 class PracticeForm extends React.Component {
 
@@ -39,50 +35,22 @@ class PracticeForm extends React.Component {
               }}
       >{formik => (<div className="m-10">
         <h1 className="ctitle">New Practice</h1>
-        <form className="cform" onSubmit={formik.handleSubmit}>
-          {labels.map((l, i) => {
-            return (
-              <div>
-                <label key={i} htmlFor={l.name} className="m-2">{l.displayText}
-                  <input id={l.name} className="m-1 border-2" value={formik.values[l.name]}
-                         type="text" name={l.name} onChange={formik.handleChange} onBlur={formik.handleBlur}/>
-                </label>
-                {formik.errors[l.name] && formik.touched[l.name] ?
-                  <div className={"cbutton2 bg-" + ERROR_COLOUR + "-500 text-white"}>
-                    {formik.errors[l.name]}
-                  </div> : null}
-              </div>
-            )
-          })}
-          <div>
-            <select className="m-2" id="instrument" name="instrument" value={formik.values.instrument}
-                    onChange={formik.handleChange} onBlur={formik.handleBlur}>
-              <option value="drums">Drums</option>
-              <option value="guitar">Guitar</option>
-            </select>
-            {formik.errors.instrument && formik.touched.instrument ?
-              <div className={"cbutton2 bg-" + ERROR_COLOUR + "-500 text-white"}>
-                {formik.errors.instrument}
-              </div> : null}
-          </div>
+        <Form className="cform" onSubmit={formik.handleSubmit}>
+          <label htmlFor="duration">Duration</label>
+          <Field name="duration" type="text"/>
+          <ErrorMessage name="duration"/>
+          <label htmlFor="bpm">BPM</label>
+          <Field name="bpm" type="text"/>
+          <ErrorMessage name="bpm"/>
+          <label htmlFor="instrument">Instrument</label>
+          <Field name="instrument" type="text"/>
+          <ErrorMessage name="instrument"/>
+          <label htmlFor="exercise">Exercise</label>
+          <Field name="exercise" type="text"/>
+          <ErrorMessage name="exercise"/>
 
-          <div>
-            <select placeholder="Exercise ID" className="m-2" id="exercise_id" name="exercise_id"
-                    value={formik.values.exercise_id} onChange={formik.handleChange} onBlur={formik.handleBlur}>
-              <option>Exercise ID</option>
-              {[1, 2, 3].map((i) => {
-                return (
-                  <option key={i} value={i}>{i}</option>
-                )
-              })}
-            </select>
-            {formik.errors.exercise_id && formik.touched.exercise_id ?
-              <div className={"cbutton2 bg-" + ERROR_COLOUR + "-500 text-white"}>
-                {formik.errors.exercise_id}
-              </div> : null}
-          </div>
           <button className={"cbutton1 bg-" + SECONDARY_COLOUR + "-500 text-white"} type="submit">Submit</button>
-        </form>
+        </Form>
       </div>)}
       </Formik>
     )}
