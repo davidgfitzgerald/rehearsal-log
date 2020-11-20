@@ -15,6 +15,10 @@
     @apply m-2 p-5 flex border-2 border-gray-400
 }
 
-.cbutton {
+.cbutton1 {
     @apply inline-block px-5 py-3 shadow text-lg rounded-md font-semibold tracking-wide
+}
+
+.cbutton2 {
+    @apply inline-block p-1 m-1 shadow rounded-md
 }

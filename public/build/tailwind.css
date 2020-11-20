@@ -19228,7 +19228,7 @@ video {
   border-color: rgba(203, 213, 224, var(--border-opacity))
 }
 
-.cbutton {
+.cbutton1 {
   display: inline-block;
   padding-left: 1.25rem;
   padding-right: 1.25rem;
@@ -19239,6 +19239,14 @@ video {
   border-radius: 0.375rem;
   font-weight: 600;
   letter-spacing: 0.025em
+}
+
+.cbutton2 {
+  display: inline-block;
+  padding: 0.25rem;
+  margin: 0.25rem;
+  box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.1), 0 1px 2px 0 rgba(0, 0, 0, 0.06);
+  border-radius: 0.375rem
 }
 
 @media (min-width: 640px) {
