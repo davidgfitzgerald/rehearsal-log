@@ -1,7 +1,8 @@
 import React from 'react'
 import { useFormik } from "formik";
-import { APP_COLOUR_2 } from "../../utils/globals.json";
+import { COLOURS } from "../../utils/globals.json";
 
+const SECONDARY_COLOUR = COLOURS.SECONDARY;
 
 function PracticeForm() {
   const labels = [
@@ -47,7 +48,7 @@ function PracticeForm() {
             )
           })}
         </select>
-        <button className={"cbutton bg-" + APP_COLOUR_2 + "-500 text-white"} type="submit">Submit</button>
+        <button className={"cbutton1 bg-" + SECONDARY_COLOUR + "-500 text-white"} type="submit">Submit</button>
       </form>
     </div>
   );

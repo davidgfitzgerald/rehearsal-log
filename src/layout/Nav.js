@@ -1,6 +1,8 @@
 import React from 'react';
 import {NavLink} from "react-router-dom";
-import { APP_COLOUR_1 } from '../utils/globals.json'
+import { COLOURS } from '../utils/globals.json'
+
+const PRIMARY_COLOUR = COLOURS.PRIMARY
 const navs = [
   {url: '/', name: 'Practices'},
   {url: '/about', name: 'About'},
@@ -10,14 +12,14 @@ const navs = [
 const Nav = () => (
 
   <div className="">
-    <nav className={"bg-"+APP_COLOUR_1+"-600 text-"+APP_COLOUR_1+"-200 shadow"}>
+    <nav className={"bg-"+PRIMARY_COLOUR+"-600 text-"+PRIMARY_COLOUR+"-200 shadow"}>
       <ul className="flex sm:mx-auto justify-center lg:justify-end">
         {navs.map((navItem, i) => {
           return (
             <li className="flex" key={i}>
               <NavLink key={i} exact
-                       className={"space-x-5 p-10 hover:bg-" + APP_COLOUR_1 + "-500 hover:text-white"  }
-                       activeClassName={"text-white text-xl bg-" + APP_COLOUR_1 + "-700"}
+                       className={"space-x-5 p-10 hover:bg-" + PRIMARY_COLOUR + "-500 hover:text-white"  }
+                       activeClassName={"text-white text-xl bg-" + PRIMARY_COLOUR + "-700"}
                        to={navItem.url}>{navItem.name}
               </NavLink>
             </li>)

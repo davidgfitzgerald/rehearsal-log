@@ -1,6 +1,9 @@
 {
-  "APP_COLOUR_1": "blue",
-  "APP_COLOUR_2": "orange",
+  "COLOURS": {
+    "PRIMARY": "blue",
+    "SECONDARY": "orange",
+    "ERROR": "red"
+  },
   "RDS_ENDPOINT": "rehearsal-log.cdlltxeggpnv.us-east-2.rds.amazonaws.com",
   "AWS_PORT": 3306,
   "ENDPOINTS": {

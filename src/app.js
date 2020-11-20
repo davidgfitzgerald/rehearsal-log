@@ -3,12 +3,13 @@ import React from 'react'
 import { Practices, About, Development } from './pages'
 import { Nav, Footer } from './layout'
 import { BrowserRouter as Router, Switch, Route } from 'react-router-dom'
-import { APP_COLOUR_1 } from './utils/globals.json'
+import { COLOURS } from './utils/globals.json'
 
+const PRIMARY_COLOUR = COLOURS.PRIMARY;
 
 function App() {
   return (
-    <div className={"bg-"+APP_COLOUR_1+"-150 flex flex-col min-h-screen"}>
+    <div className={"bg-"+PRIMARY_COLOUR+"-150 flex flex-col min-h-screen"}>
       <Router className="App">
         <Nav/>
 

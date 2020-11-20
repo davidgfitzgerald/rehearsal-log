@@ -1,5 +1,7 @@
 import React from 'react'
-import {APP_COLOUR_2} from "../utils/globals.json";
+import { COLOURS } from "../utils/globals.json";
+
+const SECONDARY_COLOUR = COLOURS.SECONDARY
 
 class Toggle extends React.Component {
   constructor(props) {
@@ -18,7 +20,7 @@ class Toggle extends React.Component {
 
   render() {
     return (
-      <button className={"cbutton bg-"+APP_COLOUR_2+"-500 text-white"}
+      <button className={"cbutton1 bg-"+SECONDARY_COLOUR+"-500 text-white"}
               onClick={this.handleClick}>
         {this.state.isToggleOn ? 'ON' : 'OFF'}
       </button>
