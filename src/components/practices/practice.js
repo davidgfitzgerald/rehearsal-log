@@ -18,7 +18,7 @@ class Practice extends React.Component {
         <ul className="cpractice">
           {Object.keys(data).filter(key => key !== "practice_id").map((k) => {
               return (
-                <li className="flex m-2">{k}: {data[k]}</li>
+                <li key={k} className="flex m-2">{k}: {data[k]}</li>
               )
         })}
         </ul>
