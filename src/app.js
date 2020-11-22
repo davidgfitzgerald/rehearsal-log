@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { Fragment } from 'react'
 
 import { Practices, About, Development } from './pages'
 import { Nav, Footer } from './layout'
@@ -15,11 +15,11 @@ function App() {
 
         <div className="flex-grow sm:max-w-md md:max-w-lg lg:max-w-4xl mx-auto">
           <Switch>
-            <div>
+            <Fragment>
               <Route exact path="/"><Practices/></Route>
               <Route exact path="/about"><About/></Route>
               <Route exact path="/development"><Development/></Route>
-            </div>
+            </Fragment>
           </Switch>
         </div>
 
