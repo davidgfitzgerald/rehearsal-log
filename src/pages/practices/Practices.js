@@ -7,8 +7,8 @@ class Practices extends React.Component {
   render () {
     return (
       <Layout>
-        <PracticeIndex/>
         <PracticeForm/>
+        <PracticeIndex/>
       </Layout>
     )
   }
