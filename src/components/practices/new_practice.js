@@ -35,19 +35,28 @@ class PracticeForm extends React.Component {
               }}
       >{formik => (<div className="m-10">
         <h1 className="ctitle">New Practice</h1>
-        <Form className="cform" onSubmit={formik.handleSubmit}>
-          <label htmlFor="duration">Duration</label>
-          <Field name="duration" type="text"/>
-          <ErrorMessage name="duration"/>
-          <label htmlFor="bpm">BPM</label>
-          <Field name="bpm" type="text"/>
-          <ErrorMessage name="bpm"/>
-          <label htmlFor="instrument">Instrument</label>
-          <Field name="instrument" type="text"/>
-          <ErrorMessage name="instrument"/>
-          <label htmlFor="exercise">Exercise</label>
-          <Field name="exercise" type="text"/>
-          <ErrorMessage name="exercise"/>
+
+        <Form className="cform flex">
+          <div>
+            <label htmlFor="duration">Duration</label>
+            <Field className="cform m-2" name="duration" type="text"/>
+            <ErrorMessage className={"cbutton1 bg-" + ERROR_COLOUR + "-500 text-white"} name="duration"/>
+          </div>
+          <div>
+            <label htmlFor="bpm">BPM</label>
+            <Field className="cform m-2" name="bpm" type="text"/>
+            <ErrorMessage className={"cbutton1 bg-" + ERROR_COLOUR + "-500 text-white"} name="bpm"/>
+          </div>
+          <div>
+            <label htmlFor="instrument">Instrument</label>
+            <Field className="cform m-2" name="instrument" type="text"/>
+            <ErrorMessage className={"cbutton1 bg-" + ERROR_COLOUR + "-500 text-white"} name="instrument"/>
+          </div>
+          <div>
+            <label htmlFor="exercise">Exercise</label>
+            <Field className="cform m-2" name="exercise" type="text"/>
+            <ErrorMessage className={"cbutton1 bg-" + ERROR_COLOUR + "-500 text-white"}  name="exercise"/>
+          </div>
 
           <button className={"cbutton1 bg-" + SECONDARY_COLOUR + "-500 text-white"} type="submit">Submit</button>
         </Form>
