@@ -2,7 +2,7 @@ import React from 'react'
 import { ENDPOINTS } from '../../utils/globals.json'
 import { Practice } from "./practice";
 
-const GETPractices = ENDPOINTS.PRACTICES.BASE;
+const PracticesURL = ENDPOINTS.PRACTICES.BASE;
 
 class PracticeIndex extends React.Component {
 
@@ -16,7 +16,7 @@ class PracticeIndex extends React.Component {
   }
 
   componentDidMount() {
-    fetch(GETPractices)
+    fetch(PracticesURL)
       .then(res => res.json())
       .then(
         (response) => {
@@ -49,10 +49,11 @@ class PracticeIndex extends React.Component {
       }</ul>
     }
 
-    return (<div>
-      <h1 className="ctitle">Practices</h1>
-      {content}
-    </div>)
+    return (
+      <div>
+        <h1 className="ctitle">Practices</h1>
+        {content}
+      </div>)
   }
 
 }
