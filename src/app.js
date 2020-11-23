@@ -1,6 +1,6 @@
 import React, { Fragment } from 'react'
 
-import { Practices, About, Development } from './pages'
+import { Practices, Exercises, About, Development } from './pages'
 import { Nav, Footer } from './layout'
 import { BrowserRouter as Router, Switch, Route } from 'react-router-dom'
 import { COLOURS } from './utils/globals.json'
@@ -19,6 +19,7 @@ function App() {
               <Route exact path="/"><Practices/></Route>
               <Route exact path="/about"><About/></Route>
               <Route exact path="/development"><Development/></Route>
+              <Route exact path="/exercises"><Exercises/></Route>
             </Fragment>
           </Switch>
         </div>

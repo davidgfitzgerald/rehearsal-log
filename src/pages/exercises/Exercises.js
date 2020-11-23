@@ -1,12 +1,12 @@
 import React from 'react'
-import { Layout } from '../layout'
+import { Layout } from '../../layout'
 
 class Exercises extends React.Component {
 
-  render() {
+  render () {
     return (
       <Layout>
-        <div className="p-5">This is the Exercises page.</div>
+        <div>This is the Exercises page.</div>
       </Layout>
     )
   }
