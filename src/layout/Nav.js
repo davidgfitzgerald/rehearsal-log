@@ -4,10 +4,8 @@ import { COLOURS } from '../utils/globals.json'
 
 const PRIMARY_COLOUR = COLOURS.PRIMARY
 const navs = [
-  {url: '/', name: 'Practices'},
-  {url: '/about', name: 'About'},
-  {url: '/development', name: 'Development'},
-  {url: '/exercises', name: 'Exercises'}
+  {url: '/', name: 'Exercises'},
+  {url: '/practices', name: 'Practices'}
 ]
 
 const Nav = () => (
