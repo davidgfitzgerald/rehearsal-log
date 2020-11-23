@@ -36,10 +36,14 @@ class PracticeIndex extends React.Component {
   }
 
   render() {
-    let practices = this.state.practices;
+    const { error, isLoaded, practices } = this.state;
     let content;
 
-    if (Object.entries(practices).length === 0) {
+    if (error) {
+      content = <div>Error: {error.message}</div>
+    } else if (!isLoaded) {
+      content = <div>Loading practices...</div>
+    } else if (Object.entries(practices).length === 0) {
       content = <p>No practices found.</p>
     } else {
       content = <ul>{
