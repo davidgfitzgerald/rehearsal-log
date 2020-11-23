@@ -28,3 +28,4 @@ dist/
 .sql/
 scripts/
 package-lock.json
+public/build
