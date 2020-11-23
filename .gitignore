@@ -30,12 +30,7 @@ scripts/
 package-lock.json
 public/build
 
-lambda_functions/practices/GET/*
-lambda_functions/practices/POST/*
+lambda_functions/practices/*/*
 lambda_functions/rds/*
-
-
-!lambda_functions/practices/GET/lambda_function.zip
-!lambda_functions/practices/POST/lambda_function.zip
-!lambda_functions/rds/lambda_function.zip
+!lambda_functions/practices/*/lambda_function.zip
 
