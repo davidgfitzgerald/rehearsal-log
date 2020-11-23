@@ -35,5 +35,5 @@ lambda_functions/rds/*
 
 !lambda_functions/practices/*/lambda_function.zip
 !lambda_functions/layers/*
-lambda_functions/layers/nodejs
+lambda_functions/layers/nodejs/*
 
