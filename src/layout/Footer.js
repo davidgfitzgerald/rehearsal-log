@@ -12,9 +12,9 @@ const Footer = () => (
           <a href="/"
              className={"cbutton1 bg-"+SECONDARY_COLOUR+"-500 text-white"}>Home</a>
         </li>
-        <li className="m-2">
-          <Toggle/>
-        </li>
+        {/*<li className="m-2">*/}
+        {/*  <Toggle/>*/}
+        {/*</li>*/}
       </ul>
     </footer>
 );
