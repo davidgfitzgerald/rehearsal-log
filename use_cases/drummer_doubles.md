@@ -6,16 +6,17 @@ To achieve this with the Rehearsal Log app I require the following:
 
 ##### Essential
 
-1. [ ] An existing or creatable exercise/rudiment object with: 
-```
-pattern: RRLL, name: Double Stroke, instrument: drums
-```
-2. [ ] An ability to create a practice object:
-```
-exercise: Double Stroke, duration: X, bpm: X, rating: /10
-```
+1. :heavy_check_mark: <input type="checkbox" disabled></input> An existing or creatable exercise/rudiment object with: 
+    ``` 
+    pattern: RRLL, name: Double Stroke, instrument: drums 
+    ```
 
-3. [ ] An ability to search through existing exercises and choose one to practice.
+2. <input type="checkbox" checked disabled></input> An ability to create a practice object: 
+    ``` 
+    exercise: Double Stroke, duration: X, bpm: X, rating: /10 
+    ```
+
+3. <input type="checkbox" disabled></input> An ability to search through existing exercises and choose one to practice.
 
 ##### Desirable
 
@@ -24,4 +25,5 @@ exercise: Double Stroke, duration: X, bpm: X, rating: /10
 
 5. [ ] An ability to view previous practices, ideally with a graph which monitors progress, namely, the threshold is graphed, 
 and a user can monitor the change of threshold.
+
 
