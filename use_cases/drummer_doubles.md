@@ -6,12 +6,12 @@ To achieve this with the Rehearsal Log app I require the following:
 
 ##### Essential
 
-1. :heavy_check_mark: <input type="checkbox" disabled></input> An existing or creatable exercise/rudiment object with: 
+1. ❎: An existing or creatable exercise/rudiment object with: 
     ``` 
     pattern: RRLL, name: Double Stroke, instrument: drums 
     ```
 
-2. <input type="checkbox" checked disabled></input> An ability to create a practice object: 
+2. ✔ An ability to create a practice object: 
     ``` 
     exercise: Double Stroke, duration: X, bpm: X, rating: /10 
     ```
