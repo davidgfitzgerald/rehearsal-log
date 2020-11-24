@@ -31,9 +31,8 @@ package-lock.json
 public/build
 
 lambda_functions/practices/*/*
-lambda_functions/rds/*
+lambda_functions/exercises/*/*
+lambda_functions/layers/
 
-!lambda_functions/practices/*/lambda_function.zip
-!lambda_functions/layers/*
-lambda_functions/layers/nodejs/*
+!lambda_functions/*/lambda_function.zip
 
