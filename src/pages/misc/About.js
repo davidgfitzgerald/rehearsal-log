@@ -1,6 +1,6 @@
 import React from 'react'
-import {Layout} from '../layout'
-import DFLiveShot from "../assets/images/DFLiveShot.JPG";
+import {Layout} from '../../layout'
+import DFLiveShot from "../../assets/images/DFLiveShot.JPG";
 
 class About extends React.Component {
 
