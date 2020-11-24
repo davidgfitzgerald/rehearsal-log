@@ -12,7 +12,7 @@ const ERROR_COLOUR = COLOURS.ERROR;
 class PracticeForm extends React.Component {
 
   render() {
-    const initialValues = { duration: "", instrument: "drums", bpm: "", exercise_id: 1}
+    const initialValues = { duration: "", bpm: "", exercise_id: 1}
     const validationSchema = Yup.object({
       duration: Yup.number()
         .typeError("Must be a number.")
@@ -62,13 +62,6 @@ class PracticeForm extends React.Component {
               <Field className="cform flex m-2" name="duration" type="text"/>
               <ErrorMessage className={"cbutton1 bg-" + ERROR_COLOUR + "-500 text-white"} component="div"
                             name="duration"/>
-            </div>
-            <div>
-              <label htmlFor="instrument">Instrument</label>
-              <Field as="select" className="cform flex m-2" name="instrument" type="text">
-                <option value="drums">Drums</option>
-                <option value="guitar">Guitar</option>
-              </Field>
             </div>
             <div>
               <label htmlFor="bpm">BPM</label>
