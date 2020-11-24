@@ -13,10 +13,10 @@ class Practice extends React.Component {
     return (
       <div className="flex justify-center">
         <ul className="cpractice">
-          <li className=" flex m-2">Practice {data["practice_id"]}:</li>
+          <li className=" flex m-2">Practice {data["id"]}:</li>
         </ul>
         <ul className="cpractice">
-          {Object.keys(data).filter(key => key !== "practice_id").map((k) => {
+          {Object.keys(data).filter(key => key !== "id").map((k) => {
               return (
                 <li key={k} className="flex m-2">{k}: {data[k]}</li>
               )
