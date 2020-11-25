@@ -6,7 +6,7 @@ To achieve this with the Rehearsal Log app I require the following:
 
 #### Essential
 
-1. ❌ An existing or creatable exercise/rudiment object with: 
+1. ✔ An existing or creatable exercise/rudiment object with: 
     ``` 
     pattern: RRLL, name: Double Stroke, instrument: drums 
     ```
