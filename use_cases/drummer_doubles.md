@@ -10,12 +10,12 @@ To achieve this with the Rehearsal Log app I require the following:
     ``` 
     pattern: RRLL, name: Double Stroke, instrument: drums 
     ```
-2. ➖ An ability to create a practice object: 
+2. ✔ An ability to create a practice object: 
     ``` 
     exercise: Double Stroke, duration: X, bpm: X, rating: /10 
     ```
 
-3. ❌ An ability to search through existing exercises and choose one to practice.
+3. ➖ An ability to search through existing exercises and choose one to practice.
 
 #### Desirable
 
