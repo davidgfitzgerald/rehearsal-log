@@ -30,6 +30,10 @@ scripts/
 package-lock.json
 public/build
 
-lambda_functions/**
-!lambda_functions/*/lambda_function.zip
+!/lambda_functions/exercises/
+/lambda_functions/exercises/**
 
+/lambda_functions/practices/
+
+/lambda_functions/layers/
+!**/lambda_function.zip
