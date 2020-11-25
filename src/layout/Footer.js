@@ -1,6 +1,6 @@
 import React from 'react';
 import { COLOURS } from '../utils/globals.json'
-import Toggle from "../components/Toggle";
+// import Toggle from "../components/Toggle";
 
 const PRIMARY_COLOUR = COLOURS.PRIMARY;
 const SECONDARY_COLOUR = COLOURS.SECONDARY;
