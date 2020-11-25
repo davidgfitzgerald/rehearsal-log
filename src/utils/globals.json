@@ -9,6 +9,9 @@
   "ENDPOINTS": {
     "PRACTICES": {
       "BASE": "https://bx9twbuxn3.execute-api.us-east-2.amazonaws.com/dev/practices"
+    },
+    "EXERCISES": {
+      "BASE": "https://bx9twbuxn3.execute-api.us-east-2.amazonaws.com/dev/exercises"
     }
   }
 }
