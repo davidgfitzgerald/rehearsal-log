@@ -32,7 +32,7 @@ public/build
 
 lambda_functions/practices/*/*
 lambda_functions/exercises/*/*
-lambda_functions/layers/
+lambda_functions/layers
 
 !lambda_functions/*/lambda_function.zip
 
