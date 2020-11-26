@@ -10,8 +10,8 @@ class AllPractices extends React.Component {
     super(props);
     this.state = {
       error: null,
-      isLoaded: false,
-      practices: []
+      practicesLoaded: false,
+      practices: [],
     }
   }
 
@@ -37,6 +37,7 @@ class AllPractices extends React.Component {
 
   render() {
     const { error, isLoaded, practices } = this.state;
+    const createdPractice = this.props.createdPractice;
     let content;
 
     if (error) {
@@ -47,7 +48,7 @@ class AllPractices extends React.Component {
       content = <p>No practices found.</p>
     } else {
       content = <ul>{
-        practices.map((p, i) => {
+        practices.concat(createdPractice).map((p, i) => {
           return <Practice key={i} data={p}/>
         })
       }</ul>

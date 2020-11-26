@@ -1,4 +1,5 @@
 import { PracticeForm } from './new_practice'
-import { PracticeIndex } from "./show_practices";
+import { AllPractices } from "./all_practices";
+import { PracticeWrapper } from "./practice_wrapper";
 
-export { PracticeForm, PracticeIndex }
+export { PracticeForm, AllPractices, PracticeWrapper }
