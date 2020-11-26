@@ -4,7 +4,7 @@ import { Practice } from "./practice";
 
 const PracticesURL = ENDPOINTS.PRACTICES.BASE;
 
-class PracticeIndex extends React.Component {
+class AllPractices extends React.Component {
 
   constructor(props) {
     super(props);
@@ -62,4 +62,4 @@ class PracticeIndex extends React.Component {
 
 }
 
-export { PracticeIndex }
+export { AllPractices }
