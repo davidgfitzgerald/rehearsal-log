@@ -1,3 +1,3 @@
-import { ExerciseIndex } from "./show_exercises";
+import { AllExercises } from "./all_exercises";
 
-export { ExerciseIndex }
+export { AllExercises }
