@@ -4,13 +4,13 @@ import { Exercise } from "./exercise";
 
 const ExercisesURL = ENDPOINTS.EXERCISES.BASE;
 
-class ExerciseIndex extends React.Component {
+class AllExercises extends React.Component {
 
   constructor(props) {
     super(props);
     this.state = {
       error: null,
-      isLoaded: false,
+      exercisesLoaded: false,
       exercises: []
     }
   }
@@ -21,7 +21,7 @@ class ExerciseIndex extends React.Component {
       .then(
         (response) => {
           this.setState({
-            isLoaded: true,
+            exercisesLoaded: true,
             exercises: response
 
           });
@@ -29,7 +29,7 @@ class ExerciseIndex extends React.Component {
         (error) => {
           console.log(error)
           this.setState({
-            isLoaded: true,
+            exercisesLoaded: true,
             error
           })
         }
@@ -37,12 +37,12 @@ class ExerciseIndex extends React.Component {
   }
 
   render() {
-    const { error, isLoaded, exercises } = this.state;
+    const { error, exercisesLoaded, exercises } = this.state;
     let content;
 
     if (error) {
       content = <div>Error: {error.message}</div>
-    } else if (!isLoaded) {
+    } else if (!exercisesLoaded) {
       content = <div>Loading exercises...</div>
     } else if (Object.entries(exercises).length === 0) {
       content = <p>No exercises found.</p>
@@ -63,4 +63,4 @@ class ExerciseIndex extends React.Component {
 
 }
 
-export { ExerciseIndex }
+export { AllExercises }
