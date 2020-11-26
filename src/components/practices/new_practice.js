@@ -18,7 +18,7 @@ class PracticeForm extends React.Component {
       exercises: []
     }
   }
-
+  //
   componentDidMount() {
     fetch(ExercisesURL)
       .then(res => res.json())
