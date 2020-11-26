@@ -18,12 +18,12 @@ class PracticeWrapper extends React.Component {
 
   setCreatedPractice (practice) {
     this.setState({
-      createdPractice: [practice]
+      createdPractice: this.state.createdPractice.concat(practice)
     })
   };
 
   render() {
-    const createdPractice = this.state.createdPractice
+    let createdPractice = this.state.createdPractice
 
     return (
       <div>

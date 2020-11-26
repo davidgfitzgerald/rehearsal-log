@@ -12,6 +12,7 @@ class AllPractices extends React.Component {
       error: null,
       practicesLoaded: false,
       practices: [],
+      createdPractice: [],
     }
   }
 
@@ -22,7 +23,7 @@ class AllPractices extends React.Component {
         (response) => {
           this.setState({
             practicesLoaded: true,
-            practices: this.state.practices.concat(response)
+            practices: response
 
           });
         },
@@ -35,29 +36,30 @@ class AllPractices extends React.Component {
       )
   }
 
-  render() {
-    const { error, practicesLoaded, practices } = this.state;
-    const createdPractice = this.props.createdPractice;
-    let content;
+  content () {
+    let { error, practicesLoaded, practices } = this.state;
+    let createdPractice = this.props.createdPractice;
 
     if (error) {
-      content = <div>Error: {error.message}</div>
+      return <div>Error: {error.message}</div>
     } else if (!practicesLoaded) {
-      content = <div>Loading practices...</div>
+      return <div>Loading practices...</div>
     } else if (Object.entries(practices).concat(createdPractice).length === 0) {
-      content = <p>No practices found.</p>
+      return <p>No practices found.</p>
     } else {
-      content = <ul>{
+      return <ul>{
         practices.concat(createdPractice).map((p, i) => {
           return <Practice key={i} data={p}/>
         })
       }</ul>
     }
+  }
 
+  render() {
     return (
       <div>
         <h1 className="ctitle">Practices</h1>
-        {content}
+        {this.content()}
       </div>)
   }
 

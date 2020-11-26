@@ -24,6 +24,7 @@ class PracticeForm extends React.Component {
       .then(res => res.json())
       .then(
         (response) => {
+          console.log("Exercises Loaded.")
           this.setState({
             exercisesLoaded: true,
             exercises: response
@@ -85,41 +86,49 @@ class PracticeForm extends React.Component {
       <Formik initialValues={initialValues}
               validationSchema={validationSchema}
               onSubmit={onSubmit}>
-        <Form>
-          <h1 className="ctitle">New Practice</h1>
-          <div className="cform flex">
-            <div>
-              <label htmlFor="duration">Duration</label>
-              <Field className="cform flex m-2" name="duration" type="text"/>
-              <ErrorMessage className={"cbutton1 bg-" + ERROR_COLOUR + "-500 text-white"} component="div"
-                            name="duration"/>
-            </div>
-            <div>
-              <label htmlFor="bpm">BPM</label>
-              <Field className="cform flex m-2" name="bpm" type="text"/>
-              <ErrorMessage className={"cbutton1 bg-" + ERROR_COLOUR + "-500 text-white"} component="div" name="bpm"/>
-            </div>
-            <div>
-              <label htmlFor="rating">Rating</label>
-              <Field className="cform flex m-2" name="rating" type="text"/>
-              <ErrorMessage className={"cbutton1 bg-" + ERROR_COLOUR + "-500 text-white"} component="div" name="rating"/>
-            </div>
-            <div>
-              <label htmlFor="exercise_id">Exercise</label>
-              <Field as="select" className="cform flex m-2" name="exercise_id" type="text">
-                {({field, form, meta}) => {if (exercisesLoaded) {  // TODO dynamic options.
-                  return exercises.map((ex, i) => {
-                    return <option key={i} value={ex.id}>{ex.id}</option>
-                  })
-                } else {
-                  return <option value="1">1</option>
-                }}}
-              </Field>
-            </div>
+        {({ errors, values, touched, setValues }) =>(
+          <Form>
+            <h1 className="ctitle">New Practice</h1>
+            <div className="cform flex">
+              <div>
+                <label htmlFor="duration">Duration</label>
+                <Field className="cform flex m-2" name="duration" type="text"/>
+                <ErrorMessage className={"cbutton1 bg-" + ERROR_COLOUR + "-500 text-white"} component="div"
+                              name="duration"/>
+              </div>
+              <div>
+                <label htmlFor="bpm">BPM</label>
+                <Field className="cform flex m-2" name="bpm" type="text"/>
+                <ErrorMessage className={"cbutton1 bg-" + ERROR_COLOUR + "-500 text-white"} component="div" name="bpm"/>
+              </div>
+              <div>
+                <label htmlFor="rating">Rating</label>
+                <Field className="cform flex m-2" name="rating" type="text"/>
+                <ErrorMessage className={"cbutton1 bg-" + ERROR_COLOUR + "-500 text-white"} component="div" name="rating"/>
+              </div>
+              <div>
+                <label htmlFor="exercise_id">Exercise</label>
+                <Field className="cform flex m-2" name="exercise_id" type="text">
+                  {({ field }) => (
+                    <select {...field}
+                            className={'form-control' + (errors.numberOfTickets && touched.numberOfTickets ? ' is-invalid' : '')}>
+                      <option value="1">1</option>
 
-            <button className={"cbutton1 bg-" + SECONDARY_COLOUR + "-500 text-white flex"} type="submit">Submit</button>
-          </div>
-        </Form>
+                    {/*  if (exercisesLoaded) {  // TODO dynamic options.*/}
+                    {/*  exercises.map((ex, i) => {*/}
+                    {/*    return <option key={i} value={ex.id}>{ex.id}</option>*/}
+                    {/*  })*/}
+                    {/*} else {*/}
+                    {/*  <option value="1">1</option>*/}
+                    {/*}*/}
+                    </select>)}
+                </Field>
+              </div>
+
+              <button className={"cbutton1 bg-" + SECONDARY_COLOUR + "-500 text-white flex"} type="submit">Submit</button>
+            </div>
+          </Form>
+        )}
       </Formik>
     )
   }
