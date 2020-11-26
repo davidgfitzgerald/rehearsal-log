@@ -22,7 +22,7 @@ class AllPractices extends React.Component {
         (response) => {
           this.setState({
             practicesLoaded: true,
-            practices: response
+            practices: this.state.practices.concat(response)
 
           });
         },
