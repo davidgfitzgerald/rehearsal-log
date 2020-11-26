@@ -3,13 +3,46 @@ import { Formik, Field, Form, ErrorMessage } from "formik";
 import { COLOURS, ENDPOINTS } from "../../utils/globals.json";
 import * as Yup from 'yup'
 
-const POSTPractice = ENDPOINTS.PRACTICES.BASE;
+const ExercisesURL = ENDPOINTS.EXERCISES.BASE;
+const PracticesURL = ENDPOINTS.PRACTICES.BASE;
 const SECONDARY_COLOUR = COLOURS.SECONDARY;
 const ERROR_COLOUR = COLOURS.ERROR;
 
 class PracticeForm extends React.Component {
 
+  constructor(props) {
+    super(props);
+    this.state = {
+      error: null,
+      exercisesLoaded: false,
+      exercises: []
+    }
+  }
+
+  componentDidMount() {
+    fetch(ExercisesURL)
+      .then(res => res.json())
+      .then(
+        (response) => {
+          this.setState({
+            exercisesLoaded: true,
+            exercises: response
+
+          });
+        },
+        (error) => {
+          console.log(error)
+          this.setState({
+            exercisesLoaded: true,
+            error
+          })
+        }
+      )
+  }
+
   render() {
+    const exercisesLoaded = this.state.exercisesLoaded;
+    const exercises = this.state.exercises;
     const initialValues = { duration: "", bpm: "", exercise_id: 1, rating: ""}
     const validationSchema = Yup.object({
       duration: Yup.number()
@@ -27,7 +60,7 @@ class PracticeForm extends React.Component {
 
     const onSubmit = (values, { resetForm }) => {
       setTimeout(() => {
-          fetch(POSTPractice, {
+          fetch(PracticesURL, {
             method: "POST",
             body: JSON.stringify(values, null, 2)
           })
@@ -74,9 +107,13 @@ class PracticeForm extends React.Component {
             <div>
               <label htmlFor="exercise_id">Exercise</label>
               <Field as="select" className="cform flex m-2" name="exercise_id" type="text">
-                <option value="1">1</option>
-                <option value="2">2</option>
-                <option value="3">3</option>
+                {({field, form, meta}) => {if (exercisesLoaded) {  // TODO dynamic options.
+                  return exercises.map((ex, i) => {
+                    return <option key={i} value={ex.id}>{ex.id}</option>
+                  })
+                } else {
+                  return <option value="1">1</option>
+                }}}
               </Field>
             </div>
 
