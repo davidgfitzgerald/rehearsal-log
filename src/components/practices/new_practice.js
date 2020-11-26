@@ -25,7 +25,7 @@ class PracticeForm extends React.Component {
         .max(10, "Must be between 0-10.")
     })  // TODO move validations to dedicated directory
 
-    const onSubmit = (values) => {
+    const onSubmit = (values, { resetForm }) => {
       setTimeout(() => {
           fetch(POSTPractice, {
             method: "POST",
@@ -41,7 +41,8 @@ class PracticeForm extends React.Component {
                 console.log(error)
                 alert(error)
                 // TODO Error handling
-              }
+              },
+              resetForm()
             )
         }, 400
       )
