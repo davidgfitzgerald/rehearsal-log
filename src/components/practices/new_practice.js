@@ -34,12 +34,12 @@ class PracticeForm extends React.Component {
             .then(res => res.json())
             .then(
               (response) => {
-                alert(JSON.stringify(response))
                 // Give the parent (PracticeWrapper) the created practice
                 this.props.setCreatedPractice(response)
               },
               (error) => {
                 console.log(error)
+                alert(error)
                 // TODO Error handling
               }
             )

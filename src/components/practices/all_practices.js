@@ -21,14 +21,14 @@ class AllPractices extends React.Component {
       .then(
         (response) => {
           this.setState({
-            isLoaded: true,
+            practicesLoaded: true,
             practices: response
 
           });
         },
         (error) => {
           this.setState({
-            isLoaded: true,
+            practicesLoaded: true,
             error
           })
         }
@@ -36,15 +36,15 @@ class AllPractices extends React.Component {
   }
 
   render() {
-    const { error, isLoaded, practices } = this.state;
+    const { error, practicesLoaded, practices } = this.state;
     const createdPractice = this.props.createdPractice;
     let content;
 
     if (error) {
       content = <div>Error: {error.message}</div>
-    } else if (!isLoaded) {
+    } else if (!practicesLoaded) {
       content = <div>Loading practices...</div>
-    } else if (Object.entries(practices).length === 0) {
+    } else if (Object.entries(practices).concat(createdPractice).length === 0) {
       content = <p>No practices found.</p>
     } else {
       content = <ul>{
