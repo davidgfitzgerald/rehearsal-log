@@ -2,7 +2,6 @@ import React from 'react'
 import { Layout } from '../../layout'
 import { AllExercises } from "../../components/exercises";
 import LoginButton from "../../components/auth/LoginButton";
-import TestForm from "../../components/testForm";
 
 class Exercises extends React.Component {
 
@@ -11,7 +10,6 @@ class Exercises extends React.Component {
       <Layout>
         <LoginButton/>
         <AllExercises/>
-        <TestForm/>
       </Layout>
     )
   }
