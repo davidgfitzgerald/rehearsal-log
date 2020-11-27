@@ -80,49 +80,52 @@ class PracticeForm extends React.Component {
 
   render() {
     return (
-      <Formik initialValues={initialValues}
-              validationSchema={practiceValidation}
-              onSubmit={this.onSubmit}>
-        {({errors, values, touched, setValues}) => (
-          <Form>
-            <h1 className="ctitle">New Practice</h1>
-            <div className="cform flex">
-              <div>
-                <label htmlFor="duration">Duration</label>
-                <Field className="cform flex m-2" name="duration" type="text"/>
-                <ErrorMessage className={"cbutton1 bg-" + ERROR_COLOUR + "-500 text-white"} component="div"
-                              name="duration"/>
+      <div>
+        <Formik initialValues={initialValues}
+                validationSchema={practiceValidation}
+                onSubmit={this.onSubmit}>
+          {({errors, values, touched, setValues}) => (
+            <Form>
+              <h1 className="ctitle">New Practice</h1>
+              <div className="cform flex">
+                <div>
+                  <label htmlFor="duration">Duration</label>
+                  <Field className="cform flex m-2 w-24" name="duration" type="text"/>
+                  <ErrorMessage className={"cbutton1 bg-" + ERROR_COLOUR + "-500 text-white"} component="div"
+                                name="duration"/>
+                </div>
+                <div>
+                  <label htmlFor="bpm">BPM</label>
+                  <Field className="cform flex m-2 w-24" name="bpm" type="text"/>
+                  <ErrorMessage className={"cbutton1 bg-" + ERROR_COLOUR + "-500 text-white"} component="div" name="bpm"/>
+                </div>
+                <div>
+                  <label htmlFor="rating">Rating</label>
+                  <Field className="cform flex m-2 w-24" name="rating" type="text"/>
+                  <ErrorMessage className={"cbutton1 bg-" + ERROR_COLOUR + "-500 text-white"} component="div"
+                                name="rating"/>
+                </div>
+                <div>
+                  <label htmlFor="exercise_id">Exercise</label>
+                  <Field className="cform flex m-2" name="exercise_id" type="text">
+                    {({field}) => (
+                      <select {...field}
+                              className={'cform flex m-2 form-control' + (errors.exercise_id && touched.exercise_id ? ' is-invalid' : '')}>
+                        {this.exerciseOptions()}
+                      </select>
+                    )}
+                  </Field>
+                </div>
+                <div className="flex">
+                  <button className={"cbutton1 bg-" + SECONDARY_COLOUR + "-500 text-white w-24"} type="submit">Log It
+                  </button>
+                </div>
               </div>
-              <div>
-                <label htmlFor="bpm">BPM</label>
-                <Field className="cform flex m-2" name="bpm" type="text"/>
-                <ErrorMessage className={"cbutton1 bg-" + ERROR_COLOUR + "-500 text-white"} component="div" name="bpm"/>
-              </div>
-              <div>
-                <label htmlFor="rating">Rating</label>
-                <Field className="cform flex m-2" name="rating" type="text"/>
-                <ErrorMessage className={"cbutton1 bg-" + ERROR_COLOUR + "-500 text-white"} component="div"
-                              name="rating"/>
-              </div>
-              <div>
-                <label htmlFor="exercise_id">Exercise</label>
-                <Field className="cform flex m-2" name="exercise_id" type="text">
-                  {({ field }) => (
-                    <select {...field} className={'cform flex m-2 form-control' + (errors.exercise_id && touched.exercise_id ? ' is-invalid' : '')}>
-                      {this.exerciseOptions()}
-                    </select>
-                  )}
-                </Field>
-              </div>
+            </Form>
 
-              <button className={"cbutton1 bg-" + SECONDARY_COLOUR + "-500 text-white flex"} type="submit">Submit
-              </button>
-            </div>
-          </Form>
 
-
-        )}
-      </Formik>
+          )}
+        </Formik></div>
 
     )
   }
