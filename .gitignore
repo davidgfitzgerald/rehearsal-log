@@ -26,6 +26,7 @@ yarn-error.log*
 # new
 dist/
 .sql/
+.todo
 scripts/
 package-lock.json
 public/build
