@@ -1,8 +1,11 @@
 import logging
 import boto3
+import shutil
+import zipfile
 
 # Variables
 bucket = "rehearsal-log"
+lambda_layers = ["DBAccessData", "inflection", "pymysql", "RDSCert"]
 
 # Logging
 logger = logging.getLogger()
@@ -11,6 +14,21 @@ logger.setLevel(logging.DEBUG)
 # Clients
 lambda_client = boto3.client("lambda")
 s3_client = boto3.client("s3")
+
+
+def zip_em_all():
+    lambda_functions = [
+        {'zip_from': '../practices/GET/lambda_function.py', 'zip_to': "functions/practices/getPractices.zip"},
+        {'zip_from': '../practices/POST/lambda_function.py', 'zip_to': "functions/practices/createPractice.zip"},
+        {'zip_from': '../exercises/GET/lambda_function.py', 'zip_to': "functions/exercises/getExercises.zip"},
+        {'zip_from': '../exercises/POST/lambda_function.py', 'zip_to': "functions/exercises/createExercise.zip"}
+    ]
+    for fn in lambda_functions:
+        with zipfile.ZipFile(fn['zip_to'], 'w') as zipit:
+            zipit.write(fn['zip_from'])
+
+    for layer in lambda_layers:
+        shutil.make_archive("layers/"+layer, 'zip', "../layers/"+layer)
 
 
 def print_services():
@@ -31,8 +49,9 @@ def upload_file(s3_key):
         raise e
 
 
-def publish_layer(s3_key):
-    layer_name = s3_key.split("/")[-1].split('.zip')[0]
+def publish_layer(layer_name):
+    s3_key = f'zips/layers/{layer_name}.zip'
+    print(s3_key)
     response = lambda_client.publish_layer_version(
         LayerName=layer_name,
         Content={
@@ -93,14 +112,14 @@ def update_functions_to_latest_layers():
             raise e
 
 
-def sync():
+def s3_sync():
     from pathlib import Path
+    for path in Path("").rglob("*.*"):
+        posix_path = path.as_posix()
+        upload_file(posix_path)
 
-    for path in Path("zips").rglob("*.*"):
-        upload_file(path.as_posix())
 
-
-def update_function(fn_name, zip_file):
+def update_function_code(fn_name, zip_file):
     resp = lambda_client.update_function_code(
         FunctionName=fn_name,
         ZipFile=zip_file,
@@ -109,27 +128,28 @@ def update_function(fn_name, zip_file):
 
 
 def mega_update():
-    # sync() # expensive
+    # 0 Zip all files [ x ]
+    zip_em_all()
 
     # 1 Upload layer
-    # 2 Publish layer
-    # 3 Set new version on lambda function
+    s3_sync()  # expensive
 
-    update_function("getPractices", "./functions/practices/getPractices.zip")
+    # 2 Publish layer (from S3)
+    resp = publish_layer('DBAccessData')
+    print(resp)
+    exit()
 
-    print_methods(lambda_client, grep="update")
+    # 3 Upload function code
+    update_function_code("getPractices", "./functions/practices/getPractices.zip")
+
+    # 4 Update lambda functions to newest layers
+    update_functions_to_latest_layers()
+
+    # print_methods(lambda_client, grep="update")
     # print_methods(s3_client)
     # upload_file("testfile.txt")
     # upload_file("zips/testfile.txt")
     # upload_file("../zips/testfile.txt")
-    exit()
-
-    update_functions_to_latest_layers()
-    exit()
-
-    resp = publish_layer('layers/DBAccessData.zip')
-    dbaccess_version_arn = resp['LayerVersionArn']
-    print(dbaccess_version_arn)
 
 
 if __name__ == '__main__':
