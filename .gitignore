@@ -36,6 +36,8 @@ public/build
 
 # Lambda functions except .zips
 /lambda_functions/*/*/*
+!/lambda_functions/exercises
+!/lambda_functions/practices
 #/lambda_functions/scripts/
 #/lambda_functions/env/
 !**/lambda_function.zip
