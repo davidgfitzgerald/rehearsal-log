@@ -34,10 +34,8 @@ public/build
 # credentials
 .env
 
-# Lambda functions except .zips
-/lambda_functions/*/*/*
-!/lambda_functions/exercises
-!/lambda_functions/practices
-#/lambda_functions/scripts/
-#/lambda_functions/env/
-!**/lambda_function.zip
+# Lambda functions
+/lambda_functions/env/
+/lambda_functions/scripts/
+/lambda_functions/layers/
+**/rds-combined-ca-bundle.pem
