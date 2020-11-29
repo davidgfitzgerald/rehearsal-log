@@ -38,4 +38,6 @@ public/build
 /lambda_functions/env/
 /lambda_functions/scripts/
 /lambda_functions/layers/
+/lambda_functions/zips/layers/
+
 **/rds-combined-ca-bundle.pem
