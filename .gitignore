@@ -39,5 +39,6 @@ public/build
 /lambda_functions/scripts/
 /lambda_functions/layers/
 /lambda_functions/zips/layers/
+/lambda_functions/**/__pycache__
 
 **/rds-combined-ca-bundle.pem
