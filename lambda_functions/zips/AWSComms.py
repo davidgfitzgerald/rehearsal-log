@@ -185,5 +185,6 @@ def mega_update():
     # 4 Update lambda functions to newest layers
     update_functions_to_latest_layers()
 
+
 if __name__ == '__main__':
     mega_update()
