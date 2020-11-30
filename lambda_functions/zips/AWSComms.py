@@ -1,8 +1,21 @@
 import logging
+import os
+import re
 import boto3
+import shutil
+import zipfile
+
+from pathlib import Path
+from inflection import camelize, pluralize, singularize, underscore
 
 # Variables
 bucket = "rehearsal-log"
+lambda_dir = "C:\\Users\\david\\Documents\\Programming\\rehearsal-log\\lambda_functions"
+
+# Layers and functions
+lambda_layers = ["DBAccessData", "inflection", "pymysql", "RDSCert"]
+lambda_functions = [{"resource": "practices", "verbs": ["get", "post"]},
+                    {"resource": "exercises", "verbs": ["get", "post"]}]
 
 # Logging
 logger = logging.getLogger()
@@ -11,6 +24,28 @@ logger.setLevel(logging.DEBUG)
 # Clients
 lambda_client = boto3.client("lambda")
 s3_client = boto3.client("s3")
+
+
+def zip_em_all():
+    zip_locs = []
+    for item in lambda_functions:
+        for verb in item["verbs"]:
+            fn_name = function_name_format(item["resource"], verb)
+            zip_locs.append({"zip_from": f'{lambda_dir}\\{item["resource"]}\\{verb.upper()}',
+                       "zip_to": f'{lambda_dir}\\zips\\functions\\{item["resource"]}\\{fn_name}.zip'})
+
+    for fn in zip_locs:
+        fn_dir = re.match(r'.*rehearsal-log\\(.*)', fn["zip_from"]).group(1)
+        print(f"zipped function {fn_dir}\\lambda_function.py")
+        zf = zipfile.ZipFile(fn['zip_to'], "w")
+        os.chdir(fn["zip_from"])
+        zf.write("lambda_function.py")
+        zf.close()
+
+    os.chdir(f"{lambda_dir}\\zips")
+    for layer in lambda_layers:
+        print(f"zipped layer {layer}")
+        shutil.make_archive("layers/"+layer, 'zip', "../layers/"+layer)
 
 
 def print_services():
@@ -25,14 +60,14 @@ def get_s3_objects():
 
 def upload_file(s3_key):
     try:
-        s3_client.put_object(Bucket=bucket, Key=s3_key)
-        print(f"Uploaded {s3_key}.")
+        s3_client.upload_file(s3_key, bucket, "zips/" + s3_key)
+        print(f"Uploaded {s3_key}")
     except Exception as e:
         raise e
 
 
-def publish_layer(s3_key):
-    layer_name = s3_key.split("/")[-1].split('.zip')[0]
+def publish_layer(layer_name):
+    s3_key = f'zips/layers/{layer_name}.zip'
     response = lambda_client.publish_layer_version(
         LayerName=layer_name,
         Content={
@@ -42,6 +77,12 @@ def publish_layer(s3_key):
         CompatibleRuntimes=["python3.8"]
     )
     return response
+
+
+def publish_layers():
+    for layer in lambda_layers:
+        publish_layer(layer)
+        print(f"Published layer {layer}")
 
 
 def print_methods(obj, grep=None, show_underscores=False):
@@ -68,7 +109,6 @@ def update_function_layers(fn_name, layers):
         FunctionName=fn_name,
         Layers=layers
     )
-    logger.info(f"Updated {fn_name} with layers: {layers}")
     print(f"Updated {fn_name} with layers: {layers}")
     return resp
 
@@ -80,7 +120,6 @@ def update_functions_to_latest_layers():
     for fn in functions:
         layers_to_update = []
         fn_name = fn["FunctionName"]
-        print(fn_name)
         for layer in fn["Layers"]:
             arn = layer["Arn"].split(":")
             layer_name = arn[-2]
@@ -93,43 +132,61 @@ def update_functions_to_latest_layers():
             raise e
 
 
-def sync():
-    from pathlib import Path
+def s3_sync():
+    for path in Path("").rglob("*.*"):
+        posix_path = path.as_posix()
+        # print(posix_path)
+        upload_file(posix_path)
 
-    for path in Path("zips").rglob("*.*"):
-        upload_file(path.as_posix())
 
-
-def update_function(fn_name, zip_file):
+def update_function_code(fn_name):
+    resource = underscore(fn_name).rsplit("_")[-1]
+    s3_key = f"zips/functions/{pluralize(resource)}/{fn_name}.zip"
+    print(f"Updating {fn_name} code with s3_key: {s3_key}")
     resp = lambda_client.update_function_code(
         FunctionName=fn_name,
-        ZipFile=zip_file,
-        DryRun=True
+        S3Bucket=bucket,
+        S3Key=s3_key,
+        # DryRun=True
     )
+    print(f"Updated {fn_name} function code")
+    return resp
+
+
+def update_all_function_code():
+    for item in lambda_functions:
+        for verb in item["verbs"]:
+            function_name = function_name_format(item["resource"], verb)
+            update_function_code(function_name)
+
+
+def function_name_format(resource, verb):
+    if verb == "get":
+        fn_name = camelize(f"{verb}_{pluralize(resource)}", uppercase_first_letter=False)
+    elif verb == 'post':
+        fn_name = camelize(f"create_{singularize(resource)}", uppercase_first_letter=False)
+    else:
+        fn_name = camelize(f"{verb}_{resource}", uppercase_first_letter=False)
+    return fn_name
 
 
 def mega_update():
-    # sync() # expensive
 
-    # 1 Upload layer
-    # 2 Publish layer
-    # 3 Set new version on lambda function
+    # 0 Zip all function and layer files
+    zip_em_all()
 
-    update_function("getPractices", "./functions/practices/getPractices.zip")
+    # 1 Upload functions and layers to S3
+    s3_sync()  # expensive
 
-    print_methods(lambda_client, grep="update")
-    # print_methods(s3_client)
-    # upload_file("testfile.txt")
-    # upload_file("zips/testfile.txt")
-    # upload_file("../zips/testfile.txt")
-    exit()
+    # 2 Publish layers from S3
+    publish_layers()
 
+    # 3 Upload function code from S3
+    update_all_function_code()
+
+    # 4 Update lambda functions to newest layers
     update_functions_to_latest_layers()
-    exit()
 
-    resp = publish_layer('layers/DBAccessData.zip')
-    dbaccess_version_arn = resp['LayerVersionArn']
-    print(dbaccess_version_arn)
 
 
 if __name__ == '__main__':
