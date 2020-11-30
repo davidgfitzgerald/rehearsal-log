@@ -4,7 +4,6 @@ import re
 import boto3
 import shutil
 import zipfile
-
 from pathlib import Path
 from inflection import camelize, pluralize, singularize, underscore
 
@@ -32,7 +31,7 @@ def zip_em_all():
         for verb in item["verbs"]:
             fn_name = function_name_format(item["resource"], verb)
             zip_locs.append({"zip_from": f'{lambda_dir}\\{item["resource"]}\\{verb.upper()}',
-                       "zip_to": f'{lambda_dir}\\zips\\functions\\{item["resource"]}\\{fn_name}.zip'})
+                             "zip_to": f'{lambda_dir}\\zips\\functions\\{item["resource"]}\\{fn_name}.zip'})
 
     for fn in zip_locs:
         fn_dir = re.match(r'.*rehearsal-log\\(.*)', fn["zip_from"]).group(1)
@@ -171,7 +170,6 @@ def function_name_format(resource, verb):
 
 
 def mega_update():
-
     # 0 Zip all function and layer files
     zip_em_all()
 
@@ -186,8 +184,6 @@ def mega_update():
 
     # 4 Update lambda functions to newest layers
     update_functions_to_latest_layers()
-
-
 
 if __name__ == '__main__':
     mega_update()
