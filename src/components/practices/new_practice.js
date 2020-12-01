@@ -101,7 +101,7 @@ class PracticeForm extends React.Component {
                 </div>
                 <div>
                   <label htmlFor="rating">Rating</label>
-                  <Field className="cform flex m-2 w-24" name="rating" type="text"/>
+                  <Field className="cform flex m-2 w-24" name="rating" type="text" placeholder="/10"/>
                   <ErrorMessage className={"cbutton1 bg-" + ERROR_COLOUR + "-500 text-white"} component="div"
                                 name="rating"/>
                 </div>
