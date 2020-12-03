@@ -9,11 +9,13 @@ const LogoutButton = () => {
 
   return (
     isAuthenticated && (
-      <div className={"cbutton1 bg-"+SECONDARY_COLOUR+"-500 text-white m-2"} onClick={()=>logout()}>
+      <div className={"flex cbutton1 bg-"+SECONDARY_COLOUR+"-500 text-white m-2"} onClick={()=>logout()}>
         Log Out
       </div>
     )
   );
 };
+
+// TODO carry on with auth0 stuff. https://auth0.com/blog/complete-guide-to-react-user-authentication/
 
 export default LogoutButton;

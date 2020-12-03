@@ -9,8 +9,10 @@ const LoginButton = () => {
 
   return (
     !isAuthenticated && (
-      <button className={"cbutton1 bg-"+SECONDARY_COLOUR+"-500 text-white m-2"} onClick={() => loginWithRedirect()}>
-        Log In.
+      <button className={"flex cbutton1 bg-"+SECONDARY_COLOUR+"-500 text-white m-2"} onClick={() => loginWithRedirect({
+        screen_hint: "signup",
+      })}>
+        Log In
       </button>
     )
   );

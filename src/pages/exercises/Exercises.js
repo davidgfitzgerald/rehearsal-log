@@ -5,6 +5,7 @@ import LoginButton from "../../components/auth/LoginButton";
 import LogoutButton from "../../components/auth/LogoutButton";
 import Profile from "../../components/user/profile";
 import { useAuth0 } from "@auth0/auth0-react";
+import LogInOrOutButton from "../../components/auth/LogInOrOutButton";
 
 function Exercises() {
   const { isLoading } = useAuth0();
@@ -14,8 +15,6 @@ function Exercises() {
     return (
       <Layout>
         <Fragment>
-          <LoginButton/>
-          <LogoutButton/>
           <Profile/>
         </Fragment>
         <AllExercises/>
