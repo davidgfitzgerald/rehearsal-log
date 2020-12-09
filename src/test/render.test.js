@@ -7,4 +7,3 @@ it('App renders without crashing', () => {
     ReactDOM.render(<App/>, div);
 })
 
-descr
