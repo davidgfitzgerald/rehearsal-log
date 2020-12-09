@@ -9,7 +9,9 @@
     "@testing-library/user-event": "^12.1.10",
     "autoprefixer": "^10.0.1",
     "babel-polyfill": "^6.26.0",
+    "bluebird": "^3.7.2",
     "formik": "^2.2.3",
+    "mysql2": "^2.2.5",
     "postcss": "^8.1.4",
     "postcss-cli": "^8.2.0",
     "react": "^17.0.1",
@@ -17,6 +19,7 @@
     "react-router": "^5.2.0",
     "react-router-dom": "^5.2.0",
     "react-scripts": "4.0.0",
+    "sequelize": "^6.3.5",
     "tailwindcss": "^1.9.6",
     "web-vitals": "^0.2.4",
     "yup": "^0.30.0"
@@ -53,6 +56,7 @@
     "babel-loader": "^8.1.0",
     "babel-plugin-syntax-dynamic-import": "^6.18.0",
     "react-json-pretty": "^2.2.0",
+    "sequelize-cli": "^6.2.0",
     "terser-webpack-plugin": "^5.0.3",
     "url-loader": "^4.1.1",
     "webpack-cli": "^4.1.0"
