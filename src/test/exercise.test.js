@@ -1,5 +1,4 @@
-const Exercise = require('../models/Exercise')
-
+// const Exercise = require('../models/Exercise')
 test.todo("exercise can be created")
 test.todo("only authenticated users can create exercise in DB")
 test.todo("public exercises can be retrieved")
