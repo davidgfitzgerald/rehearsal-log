@@ -1,7 +1,11 @@
+import {Model} from "sequelize";
+
 const Sequelize = require("sequelize")
 const { sequelize } = require("../db/connection")
 
-module.exports = sequelize.define("Exercise", {
+class Exercise extends Model { }
+
+Exercise.init({
   id: {
     type: Sequelize.INTEGER(11),
     allowNull: false,
@@ -16,4 +20,6 @@ module.exports = sequelize.define("Exercise", {
     type: Sequelize.STRING(30),
     allowNull: false
   }
-})
+}, { sequelize});
+
+export { Exercise }

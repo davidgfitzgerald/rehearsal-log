@@ -16,12 +16,16 @@ class Database {
     }
   }
 
+  async dropAll() {
+    return await sequelize.drop();
+  }
+
   async showDatabases() {
-    return await sequelize.query("SHOW DATABASES;", { type: QueryTypes.SELECT })
+    return await sequelize.query("SHOW DATABASES;", { type: QueryTypes.SELECT });
   }
 
   async tables() {
-    return await sequelize.query("SHOW TABLES;", {type: QueryTypes.SHOWTABLES })
+    return await sequelize.query("SHOW TABLES;", {type: QueryTypes.SHOWTABLES });
   }
 
   async close() {

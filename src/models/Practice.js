@@ -1,10 +1,13 @@
 // const Sequelize = require('sequelize'); // Individual imports
 // const DataTypes = require("sequelize"); // can fix intellisense bug.
 
-import { Sequelize, DataTypes} from "sequelize";
+import { Model, DataTypes } from "sequelize";
+import { Exercise } from "./Exercise";
 
 const { sequelize } = require("../db/connection")
-const Practice = sequelize.define('Practice',{
+class Practice extends Model { }
+
+Practice.init({
   id: {
     type: DataTypes.INTEGER(11),
     allowNull: false,
@@ -32,9 +35,12 @@ const Practice = sequelize.define('Practice',{
     }
   },
   exercise_id: {
-    type: Sequelize.INTEGER,
-    foreignKey: true
+    type: DataTypes.INTEGER,
+    foreignKey: true,
+    references: {
+      model: Exercise
+    }
   }
-})
+}, { sequelize});
 
-export { Practice }
+export {Practice}

@@ -1,5 +1,5 @@
-import {Practice} from "../models/Practice";
 import {Database} from "../db/Database";
+import {Practice, Exercise} from "../models";
 
 let db;
 
@@ -8,7 +8,8 @@ beforeAll(async () => {
 })
 
 beforeEach(async () => {
-  await Practice.sync({force: true})
+  await Exercise.sync()
+  await Practice.sync()
 })
 
 afterAll(() => {
@@ -18,6 +19,12 @@ test("practices table exists", async () => {
   const tables = await db.tables()
   await expect(tables).toContain("practices")
 })
+
+test("can create practice", async() => {
+
+})
+
+test.todo("two sequentially generated practices have consecutive ids")
 
 test.todo("only authenticated users can create practice in DB")
 test.todo("public practices can be retrieved by anyone")
