@@ -1,2 +1,10 @@
-test.todo("setupTests.js ran")
-test.todo("create a local duplicate mysql db testing environment")
+import { Database } from './db/Database'
+let db;
+
+beforeAll(async() => {
+  db = new Database();
+})
+
+afterAll(() => {
+  db.close()
+})

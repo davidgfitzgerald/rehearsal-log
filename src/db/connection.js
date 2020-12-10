@@ -8,8 +8,9 @@ const sequelize = new Sequelize({
   dialect: envConfig.dialect,
   username: envConfig.username,
   host: envConfig.host,
-  // logging: (...msg) => console.log(msg) // Remove to show fewer
+  database: envConfig.database,
+  logging: false //(...msg) => console.log(msg) // To show more
 })
 
 module.exports = { sequelize, envConfig }
-global.sequelize = sequelize;
+// global.sequelize = sequelize;

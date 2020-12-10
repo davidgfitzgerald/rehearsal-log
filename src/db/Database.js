@@ -1,32 +1,32 @@
-const { Sequelize } = require("sequelize");
+import { QueryTypes } from "sequelize";
 const { sequelize, envConfig } = require('../db/connection')
 
-async function resetDB(dbName) {
-  await sequelize.query(`DROP DATABASE IF EXISTS ${dbName};`)
-  await sequelize.query(`CREATE DATABASE ${dbName};`)
-  await sequelize.query(`USE ${dbName};`);
-}
+class Database {
+  constructor() {
+    this.name = envConfig.database
+  }
 
-async function showDatabases() {
-  return await sequelize.query("SHOW DATABASES;", { type: Sequelize.QueryTypes.SELECT })
-}
+  async canConnect() {
+    try {
+      await sequelize.authenticate({logging: false});
+      return true
+    } catch (err) {
+      console.error("Unable to connect to the database")
+      return false
+    }
+  }
 
-async function main() {
-  console.log("createDatabase.js main() called")
-  try {
-    await sequelize.authenticate();
-    await resetDB(envConfig.database);
+  async showDatabases() {
+    return await sequelize.query("SHOW DATABASES;", { type: QueryTypes.SELECT })
+  }
 
+  async tables() {
+    return await sequelize.query("SHOW TABLES;", {type: QueryTypes.SHOWTABLES })
+  }
+
+  async close() {
     await sequelize.close()
-    console.log("Connection closed")
-  } catch (err) {
-    console.error("Unable to connect to database: ", err)
   }
 }
 
-// main().then(res => {
-//     console.log("createDatabase.js main() finished")
-//   }
-// )
-
-export { resetDB, showDatabases, main }
+export { Database }
