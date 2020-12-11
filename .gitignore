@@ -27,7 +27,7 @@ yarn-error.log*
 dist/
 .sql/
 .todo
-scripts/
+scripts.bkup/
 package-lock.json
 public/build
 
