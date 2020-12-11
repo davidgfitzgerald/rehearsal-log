@@ -3,8 +3,8 @@ import { Database } from "../db/Database";
 const db_name = "rehearsal_log_test"
 let db;
 
-beforeAll(async () => {
-  db = new Database();
+beforeAll(() => {
+  db = new Database()
 })
 
 test("environment should be test", () => {
@@ -12,7 +12,6 @@ test("environment should be test", () => {
 })
 
 test(`${db_name} database exists`, async () => {
-  const db = new Database();
   expect(db.name).toBe(db_name)
 
   const databases = await db.showDatabases();

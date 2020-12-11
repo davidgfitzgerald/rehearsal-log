@@ -1,10 +1,11 @@
-import {Database} from "../db/Database";
+import { Database } from "../db/Database";
 import {Practice, Exercise} from "../models";
+import {tableExists} from "./common";
 
 let db;
 
-beforeAll(async () => {
-  db = new Database();
+beforeAll(() => {
+  db = new Database()
 })
 
 beforeEach(async () => {
@@ -15,9 +16,8 @@ beforeEach(async () => {
 afterAll(() => {
 })
 
-test("practices table exists", async () => {
-  const tables = await db.tables()
-  await expect(tables).toContain("practices")
+test("practices table exists", () => {
+  tableExists("practices", db)
 })
 
 test("can create practice", async() => {
