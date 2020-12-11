@@ -1,6 +1,6 @@
-import {Exercise} from "../models";
-import { Database } from "../db/Database";
-import { tableExists} from "./common";
+import {Exercise} from "../../models";
+import { Database } from "../../db/Database";
+import { tableExists} from "../common";
 
 let db;
 
