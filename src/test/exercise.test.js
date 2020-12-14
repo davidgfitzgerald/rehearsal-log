@@ -4,12 +4,16 @@ import { tableExists} from "./common";
 
 let db;
 
-beforeAll(async () => {
+beforeAll(() => {
   db = new Database();
 })
 
 beforeEach(async () => {
   await Exercise.sync()
+})
+
+afterAll(() => {
+  db.close()
 })
 
 test("exercises table exists", () => {

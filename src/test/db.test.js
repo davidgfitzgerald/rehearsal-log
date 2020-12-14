@@ -1,14 +1,22 @@
 import { Database } from "../db/Database";
 
 const db_name = "rehearsal_log_test"
-let db;
+let db = null;
 
 beforeAll(() => {
-  db = new Database()
+  db = new Database();
 })
 
-test("environment should be test", () => {
+afterAll(() => {
+  db.close()
+})
+
+test("NODE_ENV is test", () => {
   expect(process.env.NODE_ENV).toBe("test");
+})
+
+test("Can receive a global variable from setupTests.js", () => {
+  expect(global.testVariable).toBe(42)
 })
 
 test(`${db_name} database exists`, async () => {

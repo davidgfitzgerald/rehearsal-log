@@ -14,6 +14,7 @@ beforeEach(async () => {
 })
 
 afterAll(() => {
+  db.close()
 })
 
 test("practices table exists", () => {
