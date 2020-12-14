@@ -1,10 +1,3 @@
-import { Database } from './db/Database'
-let db;
-
-beforeAll(async() => {
-  db = new Database();
-})
-
-afterAll(() => {
-  db.close()
-})
+if (!global.testVariable) {
+  global.testVariable = 42
+}
