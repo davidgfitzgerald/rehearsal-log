@@ -1,4 +1,4 @@
-import { Database } from './db/Database'
+import { Database } from '../../db/Database'
 let db;
 
 beforeAll(async() => {

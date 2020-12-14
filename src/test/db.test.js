@@ -1,11 +1,15 @@
 import { Database } from "../db/Database";
 
 const db_name = "rehearsal_log_test"
-let db;
+const db = process.dbobject
 
 beforeAll(() => {
-  db = new Database()
 })
+
+// some.test.js
+test.only('global.baby to exist', () => {
+  expect(global.baby).toBe("GOT IT!");
+});
 
 test("environment should be test", () => {
   expect(process.env.NODE_ENV).toBe("test");
