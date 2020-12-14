@@ -1,7 +1,7 @@
 import { QueryTypes } from "sequelize";
 const { sequelize, envConfig } = require('../db/connection')
 
-class Database {
+export class Database {
   constructor() {
     this.name = envConfig.database
   }
@@ -32,5 +32,3 @@ class Database {
     await sequelize.close()
   }
 }
-
-export { Database }
