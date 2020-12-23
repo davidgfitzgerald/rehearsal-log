@@ -1,25 +1,18 @@
-import React from 'react';
-import {NavLink} from "react-router-dom";
-import LogInOrOutButton from "../components/auth/LogInOrOutButton";
+import React, {Component} from 'react';
 
-const routes = [
-  {url: '/', name: 'Exercises'},
-  {url: '/practices', name: 'Practices'}
-]
-
-function Nav() {
-  return (
-    <nav>
-      <LogInOrOutButton/>
-      {routes.map((route, i) => {
-        return (
-          <NavLink key={i} exact to={route.url}>{route.name}
-          </NavLink>
-        )
-      })}
-    </nav>
-  )
+class Nav extends Component {
+  render() {
+    return (
+      <nav>
+        <h3>Logo</h3>
+        <ul>
+          <li>Exercises</li>
+          <li>Practices</li>
+          <li>About</li>
+        </ul>
+      </nav>
+    );
+  }
 }
 
-export { Nav };
-
+export default Nav;
