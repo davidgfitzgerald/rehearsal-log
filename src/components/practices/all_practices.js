@@ -58,7 +58,7 @@ class AllPractices extends React.Component {
   render() {
     return (
       <div>
-        <h1 className="ctitle">Practices</h1>
+        <h1>Practices</h1>
         {this.content()}
       </div>)
   }

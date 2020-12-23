@@ -9,11 +9,11 @@ const PRIMARY_COLOUR = COLOURS.PRIMARY;
 
 function App() {
   return (
-    <div className={"bg-"+PRIMARY_COLOUR+"-150 flex flex-col min-h-screen"}>
+    <div>
       <Router className="App">
         <Nav/>
 
-        <div className="flex-grow sm:max-w-md md:max-w-lg lg:max-w-4xl mx-auto">
+        <div>
           <Switch>
             <Fragment>
               <Route exact path="/"><Exercises/></Route>

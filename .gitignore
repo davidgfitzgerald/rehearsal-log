@@ -30,6 +30,7 @@ dist/
 scripts/
 package-lock.json
 public/build
+.eslintcache
 
 # credentials
 .env

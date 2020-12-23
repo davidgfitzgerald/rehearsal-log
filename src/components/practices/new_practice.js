@@ -86,22 +86,22 @@ class PracticeForm extends React.Component {
                 onSubmit={this.onSubmit}>
           {({errors, values, touched, setValues}) => (
             <Form>
-              <h1 className="ctitle">New Practice</h1>
-              <div className="cform flex">
+              <h1>New Practice</h1>
+              <div>
                 <div>
                   <label htmlFor="duration">Duration</label>
-                  <Field className="cform flex m-2 w-24" name="duration" type="text"/>
+                  <Field name="duration" type="text"/>
                   <ErrorMessage className={"cbutton1 bg-" + ERROR_COLOUR + "-500 text-white"} component="div"
                                 name="duration"/>
                 </div>
                 <div>
                   <label htmlFor="bpm">BPM</label>
-                  <Field className="cform flex m-2 w-24" name="bpm" type="text"/>
-                  <ErrorMessage className={"cbutton1 bg-" + ERROR_COLOUR + "-500 text-white"} component="div" name="bpm"/>
+                  <Field name="bpm" type="text"/>
+                  <ErrorMessage component="div" name="bpm"/>
                 </div>
                 <div>
                   <label htmlFor="rating">Rating</label>
-                  <Field className="cform flex m-2 w-24" name="rating" type="text" placeholder="/10"/>
+                  <Field name="rating" type="text" placeholder="/10"/>
                   <ErrorMessage className={"cbutton1 bg-" + ERROR_COLOUR + "-500 text-white"} component="div"
                                 name="rating"/>
                 </div>

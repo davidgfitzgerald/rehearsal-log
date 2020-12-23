@@ -20,13 +20,12 @@
     "react-router-dom": "^5.2.0",
     "react-scripts": "4.0.1",
     "sequelize": "^6.3.5",
-    "tailwindcss": "^1.9.6",
     "web-vitals": "^0.2.4",
     "yup": "^0.30.0"
   },
   "scripts": {
     "start": "react-scripts start",
-    "build": "postcss css/tailwind.css -o public/build/tailwind.css & webpack --mode production",
+    "build": "webpack --mode production",
     "test": "react-scripts test --verbose",
     "eject": "react-scripts eject"
   },
