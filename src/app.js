@@ -10,7 +10,7 @@ const PRIMARY_COLOUR = COLOURS.PRIMARY;
 function App() {
   return (
     <div>
-      <Router className="App">
+      <Router >
         <Nav/>
 
         <div>

@@ -16,20 +16,20 @@ class Practice extends React.Component {
   render() {
     let data = this.data
     return (
-      <div className="flex justify-center">
-        <ul className="cpractice">
-          <li className=" flex m-2">Practice {data["id"]}:</li>
+      <div >
+        <ul >
+          <li >Practice {data["id"]}:</li>
         </ul>
-        <ul className="cpractice">
+        <ul >
           {displayColumns.map(({display_name, column}) => {
             if (data[column]) {
                 if (column === "rating") {
-                    return <li key={column} className="flex m-2">{display_name}: {data[column]}/10</li>
+                    return <li key={column} >{display_name}: {data[column]}/10</li>
                 } else {
-                    return <li key={column} className="flex m-2">{display_name}: {data[column]}</li>
+                    return <li key={column} >{display_name}: {data[column]}</li>
                 }
             } else {
-              return <li key={column} className="flex m-2">{display_name}: None</li>
+              return <li key={column} >{display_name}: None</li>
             }
           })}
         </ul>

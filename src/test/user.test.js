@@ -1,6 +1,0 @@
-test.todo("user can sign up")
-test.todo("previously signed up user hinted to login")
-test.todo("user can login")
-test.todo("user can logout")
-test.todo("user can set practices to private")
-test.todo("user can set practices to public")

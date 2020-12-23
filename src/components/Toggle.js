@@ -20,7 +20,7 @@ class Toggle extends React.Component {
 
   render() {
     return (
-      <button className={"cbutton1 bg-"+SECONDARY_COLOUR+"-500 text-white"}
+      <button
               onClick={this.handleClick}>
         {this.state.isToggleOn ? 'ON' : 'OFF'}
       </button>

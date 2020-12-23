@@ -91,7 +91,7 @@ class PracticeForm extends React.Component {
                 <div>
                   <label htmlFor="duration">Duration</label>
                   <Field name="duration" type="text"/>
-                  <ErrorMessage className={"cbutton1 bg-" + ERROR_COLOUR + "-500 text-white"} component="div"
+                  <ErrorMessage  component="div"
                                 name="duration"/>
                 </div>
                 <div>
@@ -102,22 +102,22 @@ class PracticeForm extends React.Component {
                 <div>
                   <label htmlFor="rating">Rating</label>
                   <Field name="rating" type="text" placeholder="/10"/>
-                  <ErrorMessage className={"cbutton1 bg-" + ERROR_COLOUR + "-500 text-white"} component="div"
+                  <ErrorMessage  component="div"
                                 name="rating"/>
                 </div>
                 <div>
                   <label htmlFor="exercise_id">Exercise</label>
-                  <Field className="cform flex m-2" name="exercise_id" type="text">
+                  <Field  name="exercise_id" type="text">
                     {({field}) => (
                       <select {...field}
-                              className={'cform flex m-2 form-control' + (errors.exercise_id && touched.exercise_id ? ' is-invalid' : '')}>
+                              className={ + (errors.exercise_id && touched.exercise_id ? ' is-invalid' : '')}>
                         {this.exerciseOptions()}
                       </select>
                     )}
                   </Field>
                 </div>
-                <div className="flex">
-                  <button className={"cbutton1 bg-" + SECONDARY_COLOUR + "-500 text-white w-24"} type="submit">Log It
+                <div >
+                  <button  type="submit">Log It
                   </button>
                 </div>
               </div>
