@@ -1,6 +1,6 @@
 import React from 'react';
 import { useAuth0 } from "@auth0/auth0-react";
-import { COLOURS } from '../../utils/globals.json'
+import COLOURS from '../../utils/globals.json'
 
 const SECONDARY_COLOUR = COLOURS.SECONDARY;
 

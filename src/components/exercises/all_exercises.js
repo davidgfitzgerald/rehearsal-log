@@ -1,8 +1,8 @@
 import React from 'react'
-import { ENDPOINTS } from '../../utils/globals.json'
+import THING from '../../utils/globals.json'
 import { Exercise } from "./exercise";
 
-const ExercisesURL = ENDPOINTS.EXERCISES.BASE;
+const ExercisesURL = THING.ENDPOINTS.EXERCISES.BASE;
 
 class AllExercises extends React.Component {
 

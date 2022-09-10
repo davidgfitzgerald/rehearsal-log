@@ -1,12 +1,12 @@
 import React from 'react'
 import { Formik, Field, Form, ErrorMessage } from "formik";
-import { COLOURS, ENDPOINTS } from "../../utils/globals.json";
+import THING from "../../utils/globals.json";
 import { practiceValidation } from "../../validations/validations";
 
-const ExercisesURL = ENDPOINTS.EXERCISES.BASE;
-const PracticesURL = ENDPOINTS.PRACTICES.BASE;
-const SECONDARY_COLOUR = COLOURS.SECONDARY;
-const ERROR_COLOUR = COLOURS.ERROR;
+const ExercisesURL = THING.ENDPOINTS.EXERCISES.BASE;
+const PracticesURL = THING.ENDPOINTS.PRACTICES.BASE;
+const SECONDARY_COLOUR = THING.COLOURS.SECONDARY;
+const ERROR_COLOUR = THING.COLOURS.ERROR;
 
 const initialValues = { duration: "", bpm: "", exercise_id: 1, rating: ""}
 

@@ -1,6 +1,6 @@
 import React from 'react';
 import { NavLink } from "react-router-dom";
-import { COLOURS } from '../utils/globals.json'
+import COLOURS from '../utils/globals.json'
 import LogInOrOutButton from "../components/auth/LogInOrOutButton";
 
 const PRIMARY_COLOUR = COLOURS.PRIMARY

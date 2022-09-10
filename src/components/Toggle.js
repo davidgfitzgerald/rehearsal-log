@@ -1,5 +1,5 @@
 import React from 'react'
-import { COLOURS } from "../utils/globals.json";
+import COLOURS from "../utils/globals.json";
 
 const SECONDARY_COLOUR = COLOURS.SECONDARY
 
